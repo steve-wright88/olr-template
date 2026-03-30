@@ -35,7 +35,7 @@
                             <td class="px-4 py-3">
                                 <div class="flex items-center gap-3">
                                     @if($agent->photo)
-                                        <img src="{{ asset('storage/' . $agent->photo) }}" alt="{{ $agent->name }}"
+                                        <img src="{{ asset('images/' . $agent->photo) }}" alt="{{ $agent->name }}"
                                              class="w-10 h-10 rounded-full object-cover">
                                     @else
                                         <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-400">

@@ -66,7 +66,7 @@
             <label for="photo" class="block text-sm font-semibold text-gray-700 mb-2">Photo</label>
             @if($agent->photo)
                 <div class="mb-3 flex items-center gap-3">
-                    <img src="{{ asset('storage/' . $agent->photo) }}" alt="{{ $agent->name }}"
+                    <img src="{{ asset('images/' . $agent->photo) }}" alt="{{ $agent->name }}"
                          class="w-16 h-16 rounded-full object-cover">
                     <span class="text-sm text-gray-500">Current photo</span>
                 </div>
