@@ -29,17 +29,15 @@ RUN composer install --no-dev --optimize-autoloader
 # Build frontend assets
 RUN npm ci && npm run build && rm -rf node_modules
 
-# Create SQLite database and set permissions
-RUN mkdir -p database storage/framework/{sessions,views,cache/data} storage/logs storage/app/public \
-    && touch database/database.sqlite \
+# Set permissions
+RUN mkdir -p storage/framework/{sessions,views,cache/data} storage/logs storage/app/public \
     && chmod -R 775 storage bootstrap/cache database
 
-# Generate key, run migrations, and seed
+# Configure for production
 RUN cp .env.example .env \
     && sed -i 's/APP_ENV=local/APP_ENV=production/' .env \
     && sed -i 's/APP_DEBUG=true/APP_DEBUG=false/' .env \
     && php artisan key:generate \
-    && php artisan migrate --force --seed \
     && php artisan config:cache \
     && php artisan route:cache \
     && php artisan view:cache

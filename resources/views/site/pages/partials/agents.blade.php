@@ -7,7 +7,7 @@
         @foreach($agents as $agent)
             <div class="bg-gray-50 border border-gray-200 rounded-xl p-5 sm:p-6 flex items-center gap-5">
                 @if($agent->photo)
-                    <img src="{{ asset('storage/' . $agent->photo) }}" alt="{{ $agent->name }}"
+                    <img src="{{ asset('images/' . $agent->photo) }}" alt="{{ $agent->name }}"
                          class="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover flex-shrink-0">
                 @else
                     <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gray-200 flex-shrink-0 flex items-center justify-center">
