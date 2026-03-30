@@ -20,20 +20,14 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
 
-# Copy composer files first for caching
-COPY composer.json composer.lock ./
-RUN composer install --no-dev --optimize-autoloader --no-scripts
-
-# Copy package files and build frontend
-COPY package.json package-lock.json vite.config.js postcss.config.js tailwind.config.js ./
-COPY resources ./resources
-RUN npm ci && npm run build && rm -rf node_modules
-
-# Copy the rest of the application
+# Copy everything first
 COPY . .
 
-# Re-run composer scripts now that all files are present
-RUN composer dump-autoload --optimize
+# Install PHP dependencies
+RUN composer install --no-dev --optimize-autoloader
+
+# Build frontend assets
+RUN npm ci && npm run build && rm -rf node_modules
 
 # Create SQLite database and set permissions
 RUN mkdir -p database storage/framework/{sessions,views,cache/data} storage/logs storage/app/public \
