@@ -36,6 +36,8 @@ RUN mkdir -p database storage/framework/{sessions,views,cache/data} storage/logs
 
 # Generate key, run migrations, and seed
 RUN cp .env.example .env \
+    && sed -i 's/APP_ENV=local/APP_ENV=production/' .env \
+    && sed -i 's/APP_DEBUG=true/APP_DEBUG=false/' .env \
     && php artisan key:generate \
     && php artisan migrate --force --seed \
     && php artisan config:cache \
