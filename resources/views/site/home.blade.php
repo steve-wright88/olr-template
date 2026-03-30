@@ -18,7 +18,7 @@
         <section class="border-b border-gray-200 bg-gray-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
                 <div class="flex flex-wrap items-center justify-center gap-3">
-                    <a href="{{ route('enter') }}" class="inline-flex items-center px-8 py-3 rounded-lg font-semibold text-white text-sm transition-colors hover:opacity-90" style="background: var(--accent);">
+                    <a href="{{ route('enter') }}" class="inline-flex items-center px-8 py-3 rounded-lg font-semibold text-white text-sm transition-colors hover:opacity-90" style="background: #c8102e;">
                         {{ __('t.enter_your_birds') }}
                     </a>
                 </div>

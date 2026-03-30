@@ -17,7 +17,8 @@
                     prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-gray-900
                     prose-p:text-gray-700 prose-li:text-gray-700
                     prose-a:text-blue-700 prose-a:no-underline hover:prose-a:underline
-                    prose-img:rounded-lg">
+                    prose-img:rounded-lg
+                    prose-ol:list-decimal prose-ol:pl-6 prose-li:pl-1">
             {!! t(\App\Models\Setting::replaceShortcodes($page->body)) !!}
         </div>
 
