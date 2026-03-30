@@ -38,7 +38,6 @@ RUN cp .env.example .env \
     && sed -i 's/APP_ENV=local/APP_ENV=production/' .env \
     && sed -i 's/APP_DEBUG=true/APP_DEBUG=false/' .env \
     && php artisan key:generate \
-    && php artisan config:cache \
     && php artisan route:cache \
     && php artisan view:cache
 

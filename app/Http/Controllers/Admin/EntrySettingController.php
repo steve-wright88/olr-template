@@ -157,20 +157,28 @@ class EntrySettingController extends Controller
             'address' => config('olr.address'),
         ];
 
-        // Logo as base64
-        $logoPath = public_path(config('olr.logo'));
+        // Logo as base64 - try multiple paths
         $logoBase64 = null;
-        if (file_exists($logoPath)) {
-            $logoBase64 = 'data:image/' . pathinfo($logoPath, PATHINFO_EXTENSION) . ';base64,' . base64_encode(file_get_contents($logoPath));
+        foreach ([config('olr.logo'), '/images/logo.jpg', '/images/logo.webp'] as $logoFile) {
+            $logoPath = public_path(ltrim($logoFile, '/'));
+            if ($logoFile && file_exists($logoPath)) {
+                $ext = strtolower(pathinfo($logoPath, PATHINFO_EXTENSION));
+                if ($ext === 'jpg') $ext = 'jpeg';
+                $logoBase64 = 'data:image/' . $ext . ';base64,' . base64_encode(file_get_contents($logoPath));
+                break;
+            }
         }
 
-        // Banner as base64
-        $bannerPath = public_path(config('olr.banner'));
+        // Banner as base64 - try multiple paths
         $bannerBase64 = null;
-        if ($bannerPath && file_exists($bannerPath)) {
-            $ext = pathinfo($bannerPath, PATHINFO_EXTENSION);
-            if ($ext === 'jpg') $ext = 'jpeg';
-            $bannerBase64 = 'data:image/' . $ext . ';base64,' . base64_encode(file_get_contents($bannerPath));
+        foreach ([config('olr.banner'), '/images/banner.jpeg', '/images/banner.jpg', '/images/banner.png'] as $bannerFile) {
+            $bannerPath = public_path(ltrim($bannerFile, '/'));
+            if ($bannerFile && file_exists($bannerPath)) {
+                $ext = strtolower(pathinfo($bannerPath, PATHINFO_EXTENSION));
+                if ($ext === 'jpg') $ext = 'jpeg';
+                $bannerBase64 = 'data:image/' . $ext . ';base64,' . base64_encode(file_get_contents($bannerPath));
+                break;
+            }
         }
 
         // PDF field toggles
