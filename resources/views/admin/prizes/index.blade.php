@@ -38,12 +38,26 @@
         @enderror
     </div>
 
-    {{-- Categories --}}
+    {{-- Reorder Form --}}
+    <div class="mb-6" x-data="prizeOrder()" x-init="init()">
+        <div id="prize-list" class="space-y-6">
     @forelse($categories as $category)
-        <div class="bg-white rounded-xl border border-gray-200 shadow-sm mb-6" x-data="{ editing: false }">
+        <div class="bg-white rounded-xl border border-gray-200 shadow-sm" data-id="{{ $category->id }}" x-data="{ editing: false }">
             {{-- Category Header --}}
             <div class="flex items-center justify-between p-5 border-b border-gray-100">
                 <div class="flex items-center gap-3">
+                    <div class="flex flex-col mr-1">
+                        @if(!$loop->first)
+                            <button type="button" @click="moveUp({{ $category->id }})" class="text-gray-400 hover:text-gray-700 p-0.5" title="Move up">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/></svg>
+                            </button>
+                        @endif
+                        @if(!$loop->last)
+                            <button type="button" @click="moveDown({{ $category->id }})" class="text-gray-400 hover:text-gray-700 p-0.5" title="Move down">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </button>
+                        @endif
+                    </div>
                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold {{ $category->type === 'positions' ? 'bg-blue-100 text-blue-700' : 'bg-purple-100 text-purple-700' }}">
                         {{ $category->type === 'positions' ? 'Positions' : 'Award' }}
                     </span>
@@ -171,4 +185,39 @@
             <p class="text-gray-400 text-sm">No prize categories yet. Add one above to get started.</p>
         </div>
     @endforelse
+        </div>
+    </div>
+
+    <script>
+        function prizeOrder() {
+            return {
+                init() {},
+                moveUp(id) { this.swap(id, 'up'); },
+                moveDown(id) { this.swap(id, 'down'); },
+                swap(id, direction) {
+                    const list = document.getElementById('prize-list');
+                    const items = [...list.children];
+                    const index = items.findIndex(el => el.dataset.id == id);
+                    const swapIndex = direction === 'up' ? index - 1 : index + 1;
+                    if (swapIndex < 0 || swapIndex >= items.length) return;
+
+                    // Swap in DOM
+                    if (direction === 'up') {
+                        list.insertBefore(items[index], items[swapIndex]);
+                    } else {
+                        list.insertBefore(items[swapIndex], items[index]);
+                    }
+
+                    // Submit new order
+                    const order = [...list.children].map(el => el.dataset.id);
+                    const form = document.createElement('form');
+                    form.method = 'POST';
+                    form.action = '{{ route("admin.prizes.reorder") }}';
+                    form.innerHTML = `@csrf` + order.map((id, i) => `<input type="hidden" name="order[]" value="${id}">`).join('');
+                    document.body.appendChild(form);
+                    form.submit();
+                }
+            };
+        }
+    </script>
 @endsection

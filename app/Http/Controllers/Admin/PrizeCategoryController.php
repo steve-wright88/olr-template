@@ -54,6 +54,20 @@ class PrizeCategoryController extends Controller
         return redirect()->route('admin.prizes.index')->with('success', 'Prize category removed.');
     }
 
+    public function reorder(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'order' => 'required|array',
+            'order.*' => 'integer|exists:prize_categories,id',
+        ]);
+
+        foreach ($validated['order'] as $index => $id) {
+            PrizeCategory::where('id', $id)->update(['sort_order' => $index + 1]);
+        }
+
+        return redirect()->route('admin.prizes.index')->with('success', 'Order updated.');
+    }
+
     public function storePosition(Request $request, PrizeCategory $prizeCategory): RedirectResponse
     {
         $validated = $request->validate([

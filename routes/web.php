@@ -99,6 +99,7 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::post('/prizes/{prizeCategory}/positions', [Admin\PrizeCategoryController::class, 'storePosition'])->name('prizes.positions.store');
     Route::put('/prize-positions/{prizePosition}', [Admin\PrizeCategoryController::class, 'updatePosition'])->name('prize-positions.update');
     Route::delete('/prize-positions/{prizePosition}', [Admin\PrizeCategoryController::class, 'destroyPosition'])->name('prize-positions.destroy');
+    Route::post('/prizes/reorder', [Admin\PrizeCategoryController::class, 'reorder'])->name('prizes.reorder');
 
     // Entry Offers
     Route::get('/offers', [Admin\EntryOfferController::class, 'index'])->name('offers.index');
