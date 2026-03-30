@@ -68,6 +68,39 @@ class PrizeCategoryController extends Controller
         return redirect()->route('admin.prizes.index')->with('success', 'Order updated.');
     }
 
+    public function bulkUpdatePositions(Request $request, PrizeCategory $prizeCategory): RedirectResponse
+    {
+        // Update existing positions
+        if ($request->has('positions')) {
+            foreach ($request->input('positions') as $id => $data) {
+                PrizePosition::where('id', $id)
+                    ->where('prize_category_id', $prizeCategory->id)
+                    ->update([
+                        'label' => $data['label'],
+                        'amount' => $data['amount'],
+                    ]);
+            }
+        }
+
+        // Delete checked positions
+        if ($request->has('delete')) {
+            PrizePosition::whereIn('id', $request->input('delete'))
+                ->where('prize_category_id', $prizeCategory->id)
+                ->delete();
+        }
+
+        // Add new position if filled in
+        if ($request->filled('new_label') && $request->filled('new_amount')) {
+            $prizeCategory->positions()->create([
+                'label' => $request->input('new_label'),
+                'amount' => $request->input('new_amount'),
+                'sort_order' => ($prizeCategory->positions()->max('sort_order') ?? 0) + 1,
+            ]);
+        }
+
+        return redirect()->route('admin.prizes.index')->with('success', 'Prizes updated.');
+    }
+
     public function storePosition(Request $request, PrizeCategory $prizeCategory): RedirectResponse
     {
         $validated = $request->validate([

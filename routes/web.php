@@ -97,6 +97,7 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::put('/prizes/{prizeCategory}', [Admin\PrizeCategoryController::class, 'update'])->name('prizes.update');
     Route::delete('/prizes/{prizeCategory}', [Admin\PrizeCategoryController::class, 'destroy'])->name('prizes.destroy');
     Route::post('/prizes/{prizeCategory}/positions', [Admin\PrizeCategoryController::class, 'storePosition'])->name('prizes.positions.store');
+    Route::post('/prizes/{prizeCategory}/bulk', [Admin\PrizeCategoryController::class, 'bulkUpdatePositions'])->name('prizes.positions.bulk');
     Route::put('/prize-positions/{prizePosition}', [Admin\PrizeCategoryController::class, 'updatePosition'])->name('prize-positions.update');
     Route::delete('/prize-positions/{prizePosition}', [Admin\PrizeCategoryController::class, 'destroyPosition'])->name('prize-positions.destroy');
     Route::post('/prizes/reorder', [Admin\PrizeCategoryController::class, 'reorder'])->name('prizes.reorder');
