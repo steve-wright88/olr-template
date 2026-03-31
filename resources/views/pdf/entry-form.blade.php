@@ -9,46 +9,15 @@
 
         /* Banner header with background image */
         .banner {
-            position: relative;
             width: 100%;
-            height: 160px;
+            height: 220px;
             background: {{ $site['primary'] }};
             overflow: hidden;
         }
         .banner-img {
             width: 100%;
-            height: 160px;
+            height: 220px;
             object-fit: cover;
-        }
-        .banner-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 12px 30px 10px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.7));
-            text-align: center;
-        }
-        .banner-overlay .logo {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            border: 2px solid rgba(255,255,255,0.4);
-            margin-bottom: 4px;
-        }
-        .banner-overlay h1 {
-            font-size: 18pt;
-            font-weight: 900;
-            color: white;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 0;
-        }
-        .banner-overlay .tagline {
-            font-size: 6.5pt;
-            color: rgba(255,255,255,0.6);
-            text-transform: uppercase;
-            letter-spacing: 3px;
         }
 
         /* Fallback header when no banner image */
@@ -224,13 +193,6 @@
     @if($bannerBase64)
         <div class="banner">
             <img src="{{ $bannerBase64 }}" class="banner-img" alt="">
-            <div class="banner-overlay">
-                @if($logoBase64)
-                    <img src="{{ $logoBase64 }}" class="logo" alt="">
-                @endif
-                <h1>{{ $site['name'] }}</h1>
-                <div class="tagline">{{ $site['tagline'] }}</div>
-            </div>
         </div>
     @else
         <div class="header-simple">

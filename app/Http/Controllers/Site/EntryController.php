@@ -133,6 +133,6 @@ class EntryController extends Controller
         }
 
         return redirect()->route('enter')
-            ->with('success', 'Entry submitted successfully! Your reference is ' . $entry->reference . '. A confirmation email has been sent to ' . $entry->email . '.');
+            ->with('success', 'Entry submitted successfully! Your reference is ' . $entry->reference . '. Someone will be in touch shortly.');
     }
 }

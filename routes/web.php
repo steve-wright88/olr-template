@@ -30,6 +30,8 @@ Route::get('/news/{slug}', [Site\NewsController::class, 'show'])->name('news.sho
 Route::get('/enter', [Site\EntryController::class, 'index'])->name('enter');
 Route::post('/enter', [Site\EntryController::class, 'store'])->name('enter.store');
 Route::get('/page/{slug}', [Site\PageController::class, 'show'])->name('pages.show');
+Route::get('/pools/create', [Site\PoolController::class, 'create'])->name('pools.create');
+Route::post('/pools', [Site\PoolController::class, 'store'])->name('pools.store');
 Route::post('/contact', [Site\ContactController::class, 'send'])->name('contact.send');
 
 // ── Admin ─────────────────────────────────────────────────────
@@ -116,6 +118,17 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     // Entry PDF
     Route::get('/entry-pdf', [Admin\EntrySettingController::class, 'pdf'])->name('entry-pdf');
     Route::post('/entry-pdf', [Admin\EntrySettingController::class, 'updatePdf'])->name('entry-pdf.update');
+
+    // Pool PDFs
+    Route::get('/pool-pdf', [Admin\PoolSettingController::class, 'index'])->name('pool-pdf');
+    Route::post('/pool-pdf', [Admin\PoolSettingController::class, 'update'])->name('pool-pdf.update');
+    Route::post('/pool-pdf/generate', [Admin\PoolSettingController::class, 'generate'])->name('pool-pdf.generate');
+
+    // Pool Entries
+    Route::get('/pool-entries', [Admin\PoolEntryController::class, 'index'])->name('pool-entries.index');
+    Route::get('/pool-entries/{poolEntry}', [Admin\PoolEntryController::class, 'show'])->name('pool-entries.show');
+    Route::patch('/pool-entries/{poolEntry}/status', [Admin\PoolEntryController::class, 'updateStatus'])->name('pool-entries.updateStatus');
+    Route::delete('/pool-entries/{poolEntry}', [Admin\PoolEntryController::class, 'destroy'])->name('pool-entries.destroy');
 
     // Settings (individual pages)
     Route::get('/settings/homepage', [Admin\SettingController::class, 'homepage'])->name('settings.homepage');

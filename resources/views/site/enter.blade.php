@@ -4,43 +4,26 @@
 
 @section('content')
     {{-- Hero with banner --}}
-    <section class="relative border-b border-gray-200 overflow-hidden">
+    <section class="border-b border-gray-200">
         @if(config('olr.banner') && file_exists(public_path(config('olr.banner'))))
             <img src="{{ asset(config('olr.banner')) }}" alt="{{ config('olr.site_name') }}" class="w-full h-auto">
         @endif
-        <div class="bg-gradient-to-b from-transparent to-black/70 absolute inset-0 flex items-end justify-center pb-6">
-            <div class="text-center">
-                <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight drop-shadow-lg">{{ __('t.enter_your_birds') }}</h1>
-                <p class="mt-1 text-lg text-white/80">{{ config('olr.site_name') }} {{ $settings['year'] }} Season</p>
-                <div class="mt-3 inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/20 backdrop-blur-sm text-white">
-                    <span class="text-2xl font-bold">{{ $settings['currency'] }}{{ $settings['fee'] }}</span>
-                    <span class="text-white/80">{{ __('t.per_bird') }}</span>
-                </div>
-            </div>
-        </div>
     </section>
 
-    {{-- Two CTAs --}}
+    {{-- CTAs --}}
     <section class="border-b border-gray-200 bg-gray-50">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                @if($entriesOpen)
-                    <a href="#entry-form" class="flex items-center justify-center gap-3 px-6 py-4 rounded-lg font-semibold text-white text-center transition-colors hover:opacity-90" style="background: var(--accent);">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
-                        {{ __('t.submit_entry') }}
-                    </a>
-                @else
-                    <div class="flex items-center justify-center gap-3 px-6 py-4 rounded-lg font-semibold text-gray-400 bg-gray-200 text-center">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-                        {{ __('t.entries_closed') }}
-                    </div>
-                @endif
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 @if(file_exists(public_path('downloads/entry-form.pdf')))
-                    <a href="{{ asset('downloads/entry-form.pdf') }}" target="_blank" class="flex items-center justify-center gap-3 px-6 py-4 rounded-lg font-semibold text-gray-700 bg-white border-2 border-gray-200 text-center hover:border-gray-300 hover:bg-gray-50 transition-colors">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                        {{ __('t.download_pdf') }}
+                    <a href="{{ asset('downloads/entry-form.pdf') }}" target="_blank" class="flex items-center justify-center gap-2 px-4 py-3 rounded-lg text-sm font-semibold text-gray-700 bg-white border border-gray-200 text-center hover:border-gray-300 hover:bg-gray-50 transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        Download Entry Form (PDF)
                     </a>
                 @endif
+                <a href="{{ route('pools.create') }}" class="flex items-center justify-center gap-2 px-4 py-3 rounded-lg text-sm font-semibold text-gray-700 bg-white border border-gray-200 text-center hover:border-gray-300 hover:bg-gray-50 transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                    Enter Pools
+                </a>
             </div>
         </div>
     </section>
