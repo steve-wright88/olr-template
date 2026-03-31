@@ -111,7 +111,7 @@
             <div class="flex flex-col items-end flex-shrink-0">
                 <p class="text-xs text-white/90 mb-2 text-center lg:text-right font-medium">
                     @if($mode === 'result' && $flight->release_time)
-                        <span class="italic">Race day weather</span> &mdash; {{ \Carbon\Carbon::parse($flight->release_time)->format('j M Y') }}
+                        <span class="italic">Race day weather</span> {{ \Carbon\Carbon::parse($flight->release_time)->format('j M Y') }}
                     @else
                         {{ __('t.weather_caveat', ['date' => now()->format('j M Y')]) }}
                     @endif
