@@ -6,6 +6,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', config('olr.site_name')) | {{ config('olr.tagline') }}</title>
     <meta name="description" content="@yield('description', config('olr.site_name') . ' | ' . config('olr.tagline'))">
+    <link rel="icon" type="image/jpeg" href="{{ asset(config('olr.logo', '/images/logo.jpg')) }}">
+    <link rel="apple-touch-icon" href="{{ asset(config('olr.logo', '/images/logo.jpg')) }}">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=roboto:400,500,600,700,800,900" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -35,7 +37,7 @@
                 <div class="hidden lg:flex items-center gap-0.5">
                     @php
                         $navPages = \App\Models\Page::published()->get();
-                        $keyPages = ['enter', 'enter-your-birds', 'prize-money', 'race-program', 'race-programme'];
+                        $keyPages = ['enter', 'enter-your-birds', 'prize-money', 'race-program', 'race-programme', 'developer'];
                         $featuredPages = $navPages->filter(fn($p) => in_array($p->slug, $keyPages) && !in_array($p->slug, ['enter', 'enter-your-birds']));
                         $otherPages = $navPages->reject(fn($p) => in_array($p->slug, $keyPages));
                         $entriesEnabled = \App\Models\Setting::get('entries_enabled', '1') === '1';
@@ -171,20 +173,13 @@
     {{-- Footer --}}
     <footer class="text-white" style="background: var(--primary);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                     <div class="font-bold text-lg tracking-wide">{{ config('olr.site_name') }}</div>
                     <div class="text-sm text-white/60 mt-1">{{ config('olr.tagline') }}</div>
                     @if(config('olr.address'))
                         <p class="text-sm text-white/50 mt-4">{{ config('olr.address') }}</p>
                     @endif
-                </div>
-                <div>
-                    <div class="font-semibold text-sm uppercase tracking-wider text-white/60 mb-3">{{ __('t.quick_links') }}</div>
-                    <div class="space-y-2">
-                        <a href="{{ route('flights.index') }}" class="block text-sm text-white/50 hover:text-white transition-colors">{{ __('t.results_analysis') }}</a>
-                        <a href="{{ route('news.index') }}" class="block text-sm text-white/50 hover:text-white transition-colors">{{ __('t.news_updates') }}</a>
-                    </div>
                 </div>
                 <div>
                     <div class="font-semibold text-sm uppercase tracking-wider text-white/60 mb-3">{{ __('t.contact') }}</div>
@@ -212,6 +207,8 @@
             @endif
             <div class="border-t border-white/10 mt-6 pt-6 text-center text-xs text-white/40">
                 &copy; {{ date('Y') }} {{ config('olr.site_name') }}. {{ __('t.data_powered_by') }} <a href="https://oneloftrace.live" target="_blank" class="underline hover:text-white/60">oneloftrace.live</a>
+                <span class="mx-1">&middot;</span>
+                Built by <a href="{{ route('pages.show', 'developer') }}" class="underline hover:text-white/60">Ste Wright</a>
             </div>
         </div>
     </footer>

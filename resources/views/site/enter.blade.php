@@ -100,6 +100,7 @@
                 {{-- Offers --}}
                 @if($offers->isNotEmpty())
                     <input type="hidden" name="offer_id" :value="selectedOffer">
+                    <input type="hidden" name="offer_qty" :value="offerQty">
                     <div class="mb-8">
                         <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-4">Choose a Package</h3>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -130,6 +131,18 @@
                                 </button>
                             </template>
                         </div>
+
+                        {{-- Quantity selector --}}
+                        <div x-show="selectedOffer" x-transition class="mt-3 flex items-center gap-3">
+                            <span class="text-sm text-gray-500">Quantity:</span>
+                            <div class="inline-flex items-center border border-gray-300 rounded-lg overflow-hidden">
+                                <button type="button" @click="changeQty(-1)" class="px-3 py-1.5 text-gray-500 hover:bg-gray-100 transition-colors text-sm font-bold" :class="offerQty <= 1 ? 'opacity-30 cursor-not-allowed' : ''">−</button>
+                                <span class="px-4 py-1.5 text-sm font-semibold text-gray-900 bg-gray-50 min-w-[2.5rem] text-center" x-text="offerQty"></span>
+                                <button type="button" @click="changeQty(1)" class="px-3 py-1.5 text-gray-500 hover:bg-gray-100 transition-colors text-sm font-bold">+</button>
+                            </div>
+                            <span class="text-xs text-gray-400" x-text="'(' + totalOfferBirds + ' birds total)'"></span>
+                        </div>
+
                         <button type="button" x-show="selectedOffer" @click="selectOffer(selectedOffer)" class="mt-2 text-xs text-gray-400 hover:text-gray-600 transition-colors">
                             Clear selection (use per-bird pricing)
                         </button>
@@ -222,12 +235,36 @@
                               placeholder="Any additional information (shipping arrangements, agent details, etc.)">{{ old('notes') }}</textarea>
                 </div>
 
+                {{-- Package suggestion --}}
+                <template x-if="suggestedDeal">
+                    <div class="mb-4 p-4 rounded-lg border-2 border-green-200 bg-green-50">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                            <div>
+                                <p class="text-sm font-semibold text-green-800">
+                                    <span x-text="suggestedDeal.qty > 1 ? suggestedDeal.qty + 'x ' : ''"></span><span x-text="suggestedDeal.offer.name"></span> available!
+                                </p>
+                                <p class="text-xs text-green-700 mt-0.5">
+                                    <template x-if="suggestedDeal.saving > 0">
+                                        <span>Save {{ $settings['currency'] }}<span x-text="suggestedDeal.saving.toLocaleString()"></span></span>
+                                    </template>
+                                    <template x-if="suggestedDeal.bonusBirds > 0">
+                                        <span x-text="(suggestedDeal.saving > 0 ? ' + ' : '') + 'Get ' + suggestedDeal.bonusBirds + ' bonus bird(s) FREE'"></span>
+                                    </template>
+                                </p>
+                            </div>
+                            <button type="button" @click="applySuggestion()" class="px-4 py-2 text-sm font-semibold text-white rounded-lg bg-green-600 hover:bg-green-700 transition-colors whitespace-nowrap">
+                                Apply Deal
+                            </button>
+                        </div>
+                    </div>
+                </template>
+
                 {{-- Fee summary --}}
                 <div class="mb-8 p-4 bg-gray-50 rounded-lg border border-gray-200">
                     <div class="flex items-center justify-between">
                         <div class="text-sm text-gray-600">
                             <template x-if="activeOffer">
-                                <span>Package: <strong x-text="activeOffer.name"></strong></span>
+                                <span>Package: <strong x-text="activeOffer.name + (offerQty > 1 ? ' x' + offerQty : '')"></strong></span>
                             </template>
                             <template x-if="!activeOffer">
                                 <span>{{ __('t.entry_fee') }}: <strong>{{ $settings['currency'] }}{{ $settings['fee'] }}</strong> {{ __('t.per_bird') }}</span>
@@ -237,7 +274,7 @@
                     </div>
                     <p class="text-xs text-gray-400 mt-1">
                         <template x-if="activeOffer">
-                            <span>Package price for <span x-text="activeOffer.number_of_birds + (activeOffer.bonus_birds > 0 ? ' + ' + activeOffer.bonus_birds + ' free' : '')"></span> bird(s). Someone will be in touch shortly with payment details.</span>
+                            <span>Package price for <span x-text="totalOfferBirds"></span> bird(s)<span x-show="offerQty > 1" x-text="' (' + offerQty + ' x ' + activeOffer.name + ')'"></span>. Someone will be in touch shortly with payment details.</span>
                         </template>
                         <template x-if="!activeOffer">
                             <span>Total based on <span x-text="birds.length"></span> bird(s). Someone will be in touch shortly with payment details.</span>
@@ -285,33 +322,104 @@
             birds: [{ ring_number: '', pigeon_name: '' }],
             offers: @json($offers ?? []),
             selectedOffer: null,
+            offerQty: 1,
 
             get activeOffer() {
                 if (!this.selectedOffer) return null;
                 return this.offers.find(o => o.id == this.selectedOffer);
             },
 
+            get totalOfferBirds() {
+                if (!this.activeOffer) return 0;
+                return (this.activeOffer.number_of_birds + this.activeOffer.bonus_birds) * this.offerQty;
+            },
+
+            // Find best package deal for current bird count
+            get suggestedDeal() {
+                if (this.selectedOffer) return null;
+                let birdCount = this.birds.length;
+                let bestDeal = null;
+
+                for (let offer of this.offers) {
+                    let qty = Math.floor(birdCount / offer.number_of_birds);
+                    if (qty < 1) continue;
+                    let packageCost = parseFloat(offer.price) * qty;
+                    let remainingBirds = birdCount - (offer.number_of_birds * qty);
+                    let remainingCost = remainingBirds * this.perBirdFee;
+                    let dealTotal = packageCost + remainingCost;
+                    let normalTotal = birdCount * this.perBirdFee;
+                    let bonusBirds = offer.bonus_birds * qty;
+
+                    if (dealTotal < normalTotal || bonusBirds > 0) {
+                        let saving = normalTotal - dealTotal;
+                        if (!bestDeal || (saving + (bonusBirds * this.perBirdFee)) > (bestDeal.saving + (bestDeal.bonusBirds * this.perBirdFee))) {
+                            bestDeal = {
+                                offer: offer,
+                                qty: qty,
+                                cost: dealTotal,
+                                saving: saving,
+                                bonusBirds: bonusBirds,
+                                totalBirds: birdCount + bonusBirds,
+                                remaining: remainingBirds,
+                            };
+                        }
+                    }
+                }
+                return bestDeal;
+            },
+
             get totalFee() {
-                if (this.activeOffer) return parseFloat(this.activeOffer.price);
+                if (this.activeOffer) return parseFloat(this.activeOffer.price) * this.offerQty;
                 return this.birds.length * this.perBirdFee;
+            },
+
+            applySuggestion() {
+                let deal = this.suggestedDeal;
+                if (!deal) return;
+                this.selectedOffer = deal.offer.id;
+                this.offerQty = deal.qty;
+                // Keep existing bird data, add bonus bird slots
+                let existingBirds = this.birds.map(b => ({...b}));
+                let totalSlots = (deal.offer.number_of_birds + deal.offer.bonus_birds) * deal.qty;
+                if (deal.remaining > 0) totalSlots += deal.remaining;
+                this.maxBirds = totalSlots;
+                // Pad with empty rows if we get bonus birds
+                while (existingBirds.length < totalSlots) {
+                    existingBirds.push({ ring_number: '', pigeon_name: '' });
+                }
+                this.birds = existingBirds;
             },
 
             selectOffer(id) {
                 if (this.selectedOffer == id) {
                     this.selectedOffer = null;
+                    this.offerQty = 1;
                     this.maxBirds = this.defaultMaxBirds;
                     this.birds = [{ ring_number: '', pigeon_name: '' }];
                 } else {
                     this.selectedOffer = id;
-                    let offer = this.offers.find(o => o.id == id);
-                    if (offer) {
-                        this.maxBirds = offer.number_of_birds + offer.bonus_birds;
-                        // Auto-generate bird rows for the package
-                        this.birds = [];
-                        for (let i = 0; i < this.maxBirds; i++) {
-                            this.birds.push({ ring_number: '', pigeon_name: '' });
-                        }
-                    }
+                    this.offerQty = 1;
+                    this.applyOfferBirds();
+                }
+            },
+
+            changeQty(delta) {
+                let newQty = this.offerQty + delta;
+                if (newQty < 1) return;
+                this.offerQty = newQty;
+                this.applyOfferBirds();
+            },
+
+            applyOfferBirds() {
+                let offer = this.activeOffer;
+                if (!offer) return;
+                let total = (offer.number_of_birds + offer.bonus_birds) * this.offerQty;
+                this.maxBirds = total;
+                // Keep existing bird data where possible
+                let existingBirds = this.birds.map(b => ({...b}));
+                this.birds = [];
+                for (let i = 0; i < total; i++) {
+                    this.birds.push(existingBirds[i] || { ring_number: '', pigeon_name: '' });
                 }
             },
 

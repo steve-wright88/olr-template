@@ -66,6 +66,7 @@ class EntryController extends Controller
             'team_name' => 'nullable|string|max:255',
             'notes' => 'nullable|string|max:1000',
             'offer_id' => 'nullable|integer|exists:entry_offers,id',
+            'offer_qty' => 'nullable|integer|min:1|max:99',
             'birds' => 'required|array|min:1',
             'birds.*.ring_number' => 'required|string|max:50',
             'birds.*.pigeon_name' => 'nullable|string|max:100',
@@ -78,6 +79,7 @@ class EntryController extends Controller
 
         // Calculate fee
         $offerId = null;
+        $offerQty = max(1, (int) ($validated['offer_qty'] ?? 1));
         $totalFee = null;
         $entryFee = (float) Setting::get('entry_fee', '150');
 
@@ -85,7 +87,10 @@ class EntryController extends Controller
             $offer = EntryOffer::where('id', $validated['offer_id'])->active()->first();
             if ($offer) {
                 $offerId = $offer->id;
-                $totalFee = $offer->price;
+                $packageBirds = $offer->number_of_birds * $offerQty;
+                $totalBirds = count($validated['birds']);
+                $remainingBirds = max(0, $totalBirds - ($offer->number_of_birds + $offer->bonus_birds) * $offerQty);
+                $totalFee = ($offer->price * $offerQty) + ($remainingBirds * $entryFee);
             }
         }
 
