@@ -19,7 +19,7 @@ class HomeController extends Controller
 
         $season = Season::where('loft_id', config('olr.loft_id'))
             ->where('is_active', true)
-            ->latest()
+            ->orderByDesc('id')
             ->first();
 
         $homepageMode = Setting::get('homepage_mode', 'pre-season'); // pre-season or race-season
