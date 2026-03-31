@@ -6,7 +6,7 @@
     {{-- Banner --}}
     @if(config('olr.banner') && file_exists(public_path(config('olr.banner'))))
         <section class="border-b border-gray-200">
-            <img src="{{ asset(config('olr.banner')) }}" alt="{{ config('olr.site_name') }}" class="w-full h-48 sm:h-64 lg:h-auto object-cover object-center">
+            <img src="{{ asset(config('olr.banner')) }}" alt="{{ config('olr.site_name') }}" class="w-full h-auto">
         </section>
     @endif
 
