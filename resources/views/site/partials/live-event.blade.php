@@ -109,9 +109,9 @@
             {{-- Weather Cards --}}
             @if($hasCoords)
             <div class="flex flex-col items-end flex-shrink-0">
-                <p class="text-[10px] text-white/75 mb-2 italic text-center lg:text-right">
+                <p class="text-xs text-white/90 mb-2 text-center lg:text-right font-medium">
                     @if($mode === 'result' && $flight->release_time)
-                        Weather on race day ({{ \Carbon\Carbon::parse($flight->release_time)->format('j M Y') }})
+                        <span class="italic">Race day weather</span> &mdash; {{ \Carbon\Carbon::parse($flight->release_time)->format('j M Y') }}
                     @else
                         {{ __('t.weather_caveat', ['date' => now()->format('j M Y')]) }}
                     @endif
