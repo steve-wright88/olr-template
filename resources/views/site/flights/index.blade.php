@@ -270,16 +270,16 @@
                             <th class="px-3 py-3 text-center cursor-pointer select-none hover:text-gray-700" @click="sortBy('top5')">
                                 {{ __('t.top_5') }} <span x-show="sortCol==='top5'" x-text="sortDir==='asc'?'\u25B2':'\u25BC'" class="text-[10px]" style="color:var(--accent);"></span>
                             </th>
-                            <th class="px-3 py-3 text-center cursor-pointer select-none hover:text-gray-700 hidden md:table-cell" @click="sortBy('top10')">
+                            <th class="px-3 py-3 text-center cursor-pointer select-none hover:text-gray-700" @click="sortBy('top10')">
                                 {{ __('t.top_10') }} <span x-show="sortCol==='top10'" x-text="sortDir==='asc'?'\u25B2':'\u25BC'" class="text-[10px]" style="color:var(--accent);"></span>
                             </th>
-                            <th class="px-3 py-3 text-center cursor-pointer select-none hover:text-gray-700 hidden lg:table-cell" @click="sortBy('top20')">
+                            <th class="px-3 py-3 text-center cursor-pointer select-none hover:text-gray-700" @click="sortBy('top20')">
                                 {{ __('t.top_20') }} <span x-show="sortCol==='top20'" x-text="sortDir==='asc'?'\u25B2':'\u25BC'" class="text-[10px]" style="color:var(--accent);"></span>
                             </th>
                             <th class="px-3 py-3 text-right cursor-pointer select-none hover:text-gray-700" @click="sortBy('avgSpeedMpm')">
                                 {{ __('t.avg_speed') }} <span x-show="sortCol==='avgSpeedMpm'" x-text="sortDir==='asc'?'\u25B2':'\u25BC'" class="text-[10px]" style="color:var(--accent);"></span>
                             </th>
-                            <th class="pr-4 pl-3 py-3 text-right cursor-pointer select-none hover:text-gray-700 hidden sm:table-cell" @click="sortBy('topSpeedMpm')">
+                            <th class="pr-4 pl-3 py-3 text-right cursor-pointer select-none hover:text-gray-700" @click="sortBy('topSpeedMpm')">
                                 {{ __('t.top_speed') }} <span x-show="sortCol==='topSpeedMpm'" x-text="sortDir==='asc'?'\u25B2':'\u25BC'" class="text-[10px]" style="color:var(--accent);"></span>
                             </th>
                         </tr>
@@ -307,12 +307,12 @@
                                           x-text="bird.avgCoefficient < 999 ? bird.avgCoefficient.toFixed(1) + '%' : '-'"></span>
                                 </td>
                                 <td class="px-3 py-2.5 text-center tabular-nums font-semibold" :class="bird.top5 ? 'text-green-600' : 'text-gray-300'" x-text="bird.top5 || '-'"></td>
-                                <td class="px-3 py-2.5 text-center tabular-nums font-semibold hidden md:table-cell" :class="bird.top10 ? 'text-blue-600' : 'text-gray-300'" x-text="bird.top10 || '-'"></td>
-                                <td class="px-3 py-2.5 text-center tabular-nums text-gray-600 hidden lg:table-cell" :class="bird.top20 ? 'text-gray-700' : 'text-gray-300'" x-text="bird.top20 || '-'"></td>
+                                <td class="px-3 py-2.5 text-center tabular-nums font-semibold" :class="bird.top10 ? 'text-blue-600' : 'text-gray-300'" x-text="bird.top10 || '-'"></td>
+                                <td class="px-3 py-2.5 text-center tabular-nums text-gray-600" :class="bird.top20 ? 'text-gray-700' : 'text-gray-300'" x-text="bird.top20 || '-'"></td>
                                 <td class="px-3 py-2.5 text-right tabular-nums" style="font-family:'Space Grotesk',sans-serif;">
                                     <span class="font-semibold text-gray-900" x-text="bird.avgSpeedMpm ? bird.avgSpeedMpm.toFixed(1) : '-'"></span>
                                 </td>
-                                <td class="pr-4 pl-3 py-2.5 text-right tabular-nums font-semibold text-gray-900 hidden sm:table-cell" style="font-family:'Space Grotesk',sans-serif;" x-text="bird.topSpeedMpm ? bird.topSpeedMpm.toFixed(1) : '-'"></td>
+                                <td class="pr-4 pl-3 py-2.5 text-right tabular-nums font-semibold text-gray-900" style="font-family:'Space Grotesk',sans-serif;" x-text="bird.topSpeedMpm ? bird.topSpeedMpm.toFixed(1) : '-'"></td>
                             </tr>
                             {{-- Expanded: flight history --}}
                             <tr x-show="expanded === bird.pigeonId" x-cloak class="bg-gray-50/80">
