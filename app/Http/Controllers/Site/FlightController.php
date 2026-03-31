@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use App\Models\Flight;
 use App\Models\Season;
+use App\Models\Setting;
 use App\Services\AnalysisService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -75,11 +76,51 @@ class FlightController extends Controller
 
         $top10Speed = $flight->results->take(10)->avg('speed');
 
+        // Match flight to race map point for weather coordinates
+        $racePoints = json_decode(Setting::get('race_map_points', '[]'), true) ?: [];
+        $loftLat = Setting::get('race_map_loft_lat', '53.05');
+        $loftLng = Setting::get('race_map_loft_lng', '-1.48');
+        $matchedPoint = null;
+        $flightName = strtolower($flight->name);
+        $flightDistance = $flight->distance;
+
+        foreach ($racePoints as $point) {
+            $pointName = strtolower($point['name'] ?? '');
+            if ($pointName && str_contains($flightName, $pointName)) {
+                $matchedPoint = $point; break;
+            }
+        }
+        if (! $matchedPoint && preg_match('/\bfinal\b/i', $flight->name) && !str_contains($flightName, 'semi')) {
+            foreach ($racePoints as $point) {
+                if (($point['type'] ?? '') === 'final') { $matchedPoint = $point; break; }
+            }
+        }
+        if (! $matchedPoint && str_contains($flightName, 'semi')) {
+            foreach ($racePoints as $point) {
+                if (($point['type'] ?? '') === 'semi') { $matchedPoint = $point; break; }
+            }
+        }
+        if (! $matchedPoint && $flightDistance && $flightDistance > 5) {
+            $bestDiff = PHP_FLOAT_MAX;
+            foreach ($racePoints as $point) {
+                if (! empty($point['distance']) && preg_match('/(\d+)\s*km/i', $point['distance'], $m)) {
+                    $diff = abs((float) $m[1] - $flightDistance);
+                    if ($diff < $bestDiff && $diff < 30) {
+                        $bestDiff = $diff;
+                        $matchedPoint = $point;
+                    }
+                }
+            }
+        }
+
         return view('site.flights.show', [
             'flight' => $flight,
             'results' => $results,
             'winnerTime' => $winnerTime,
             'top10Speed' => $top10Speed,
+            'matchedPoint' => $matchedPoint,
+            'loftLat' => $loftLat,
+            'loftLng' => $loftLng,
         ]);
     }
 

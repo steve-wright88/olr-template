@@ -224,28 +224,25 @@
             let diff = ((windDeg - flightBearing) + 360) % 360;
             let angleDiff = diff > 180 ? 360 - diff : diff;
 
-            let label, detail, colorClass, barClass, strength;
+            let label, detail, colorClass, barClass;
+            // Bar shows wind speed as % of 40mph scale
+            const strength = Math.min(100, (windSpeed / 40) * 100);
 
             if (angleDiff <= 30) {
                 label = 'Tailwind'; detail = 'Wind pushing birds home';
                 colorClass = 'text-green-400'; barClass = 'bg-green-400';
-                strength = Math.min(100, 50 + windSpeed * 3);
             } else if (angleDiff <= 60) {
                 label = 'Tail/Cross'; detail = 'Helpful crosswind';
                 colorClass = 'text-green-300'; barClass = 'bg-green-300';
-                strength = Math.min(90, 40 + windSpeed * 2);
             } else if (angleDiff <= 120) {
                 label = 'Crosswind'; detail = 'Wind across the route';
                 colorClass = 'text-yellow-400'; barClass = 'bg-yellow-400';
-                strength = Math.min(80, 30 + windSpeed * 2);
             } else if (angleDiff <= 150) {
                 label = 'Head/Cross'; detail = 'Difficult crosswind';
                 colorClass = 'text-orange-400'; barClass = 'bg-orange-400';
-                strength = Math.min(90, 40 + windSpeed * 2);
             } else {
                 label = 'Headwind'; detail = 'Wind against the birds';
                 colorClass = 'text-red-400'; barClass = 'bg-red-400';
-                strength = Math.min(100, 50 + windSpeed * 3);
             }
 
             return { label, detail, colorClass, barClass, strength, loaded: true };
