@@ -85,6 +85,21 @@ class HomeController extends Controller
                         ->orderByDesc('release_time')
                         ->first();
 
+                    // Priority 4: admin-selected flight or most recent race from any season
+                    if (! $lastFlight) {
+                        $manualFlightId = Setting::get('homepage_latest_flight_id');
+                        if ($manualFlightId) {
+                            $lastFlight = Flight::find($manualFlightId);
+                        }
+                    }
+                    if (! $lastFlight) {
+                        $lastFlight = Flight::where('status', 'stopped')
+                            ->where('distance', '>', 50)
+                            ->where('flight_type', 'race')
+                            ->orderByDesc('release_time')
+                            ->first();
+                    }
+
                     if ($lastFlight) {
                         $liveEvent = [
                             'mode' => 'result',
