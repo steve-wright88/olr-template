@@ -38,7 +38,7 @@
                     @php
                         $navPages = \App\Models\Page::published()->get();
                         $keyPages = ['enter', 'enter-your-birds', 'prize-money', 'race-program', 'race-programme', 'developer'];
-                        $featuredPages = $navPages->filter(fn($p) => in_array($p->slug, $keyPages) && !in_array($p->slug, ['enter', 'enter-your-birds']));
+                        $featuredPages = $navPages->filter(fn($p) => in_array($p->slug, $keyPages) && !in_array($p->slug, ['enter', 'enter-your-birds', 'developer']));
                         $otherPages = $navPages->reject(fn($p) => in_array($p->slug, $keyPages));
                         $entriesEnabled = \App\Models\Setting::get('entries_enabled', '1') === '1';
                     @endphp
