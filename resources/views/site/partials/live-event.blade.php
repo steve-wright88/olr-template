@@ -109,7 +109,13 @@
             {{-- Weather Cards --}}
             @if($hasCoords)
             <div class="flex flex-col items-end flex-shrink-0">
-                <p class="text-[10px] text-white/75 mb-2 italic text-center lg:text-right">{{ __('t.weather_caveat', ['date' => now()->format('j M Y')]) }}</p>
+                <p class="text-[10px] text-white/75 mb-2 italic text-center lg:text-right">
+                    @if($mode === 'result' && $flight->release_time)
+                        Weather on race day ({{ \Carbon\Carbon::parse($flight->release_time)->format('j M Y') }})
+                    @else
+                        {{ __('t.weather_caveat', ['date' => now()->format('j M Y')]) }}
+                    @endif
+                </p>
                 <div class="grid grid-cols-3 gap-2 sm:gap-3 lg:flex lg:flex-nowrap">
                     {{-- Liberation Point Weather --}}
                     <div class="bg-white/10 backdrop-blur-sm rounded-lg sm:rounded-xl px-3 py-2.5 sm:px-5 sm:py-4 lg:min-w-[170px] border border-white/5">
@@ -197,6 +203,8 @@
         const libLng = {{ $point['lng'] }};
         const loftLat = {{ $loftLat }};
         const loftLng = {{ $loftLng }};
+        const flightMode = '{{ $mode }}';
+        const flightDate = '{{ $flight->release_time ? \Carbon\Carbon::parse($flight->release_time)->format("Y-m-d") : "" }}';
 
         function degToCompass(deg) {
             const dirs = ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'];
@@ -243,29 +251,50 @@
             return { label, detail, colorClass, barClass, strength, loaded: true };
         }
 
+        const wmoMap = {
+            0: ['Clear sky', '01d'], 1: ['Mainly clear', '02d'], 2: ['Partly cloudy', '03d'], 3: ['Overcast', '04d'],
+            45: ['Foggy', '50d'], 48: ['Rime fog', '50d'],
+            51: ['Light drizzle', '09d'], 53: ['Drizzle', '09d'], 55: ['Heavy drizzle', '09d'],
+            61: ['Light rain', '10d'], 63: ['Rain', '10d'], 65: ['Heavy rain', '10d'],
+            71: ['Light snow', '13d'], 73: ['Snow', '13d'], 75: ['Heavy snow', '13d'],
+            80: ['Light showers', '09d'], 81: ['Showers', '09d'], 82: ['Heavy showers', '09d'],
+            95: ['Thunderstorm', '11d'], 96: ['Thunderstorm + hail', '11d'], 99: ['Thunderstorm + hail', '11d'],
+        };
+
         async function fetchOpenMeteo(lat, lng) {
+            // Use historical API for past races, forecast for live/upcoming
+            if (flightMode === 'result' && flightDate) {
+                return fetchHistorical(lat, lng, flightDate);
+            }
             const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&current=temperature_2m,weather_code,wind_speed_10m,wind_direction_10m&wind_speed_unit=mph&timezone=auto`;
             const res = await fetch(url);
             const data = await res.json();
             const c = data.current;
-
-            const wmoMap = {
-                0: ['Clear sky', '01d'], 1: ['Mainly clear', '02d'], 2: ['Partly cloudy', '03d'], 3: ['Overcast', '04d'],
-                45: ['Foggy', '50d'], 48: ['Rime fog', '50d'],
-                51: ['Light drizzle', '09d'], 53: ['Drizzle', '09d'], 55: ['Heavy drizzle', '09d'],
-                61: ['Light rain', '10d'], 63: ['Rain', '10d'], 65: ['Heavy rain', '10d'],
-                71: ['Light snow', '13d'], 73: ['Snow', '13d'], 75: ['Heavy snow', '13d'],
-                80: ['Light showers', '09d'], 81: ['Showers', '09d'], 82: ['Heavy showers', '09d'],
-                95: ['Thunderstorm', '11d'], 96: ['Thunderstorm + hail', '11d'], 99: ['Thunderstorm + hail', '11d'],
-            };
-
             const [desc, icon] = wmoMap[c.weather_code] || ['Unknown', '03d'];
-
             return {
                 temp: Math.round(c.temperature_2m),
                 windSpeed: Math.round(c.wind_speed_10m),
                 windDeg: c.wind_direction_10m,
                 windDir: degToCompass(c.wind_direction_10m),
+                description: desc,
+                icon: icon,
+                loaded: true,
+            };
+        }
+
+        async function fetchHistorical(lat, lng, date) {
+            const url = `https://archive-api.open-meteo.com/v1/archive?latitude=${lat}&longitude=${lng}&start_date=${date}&end_date=${date}&hourly=temperature_2m,weather_code,wind_speed_10m,wind_direction_10m&wind_speed_unit=mph&timezone=auto`;
+            const res = await fetch(url);
+            const data = await res.json();
+            // Use midday (12:00) data as representative of race day
+            const h = data.hourly;
+            const noonIdx = 12; // index 12 = 12:00
+            const [desc, icon] = wmoMap[h.weather_code[noonIdx]] || ['Unknown', '03d'];
+            return {
+                temp: Math.round(h.temperature_2m[noonIdx]),
+                windSpeed: Math.round(h.wind_speed_10m[noonIdx]),
+                windDeg: h.wind_direction_10m[noonIdx],
+                windDir: degToCompass(h.wind_direction_10m[noonIdx]),
                 description: desc,
                 icon: icon,
                 loaded: true,
