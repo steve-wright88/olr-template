@@ -208,7 +208,7 @@
             <div class="border-t border-white/10 mt-6 pt-6 text-center text-xs text-white/40">
                 &copy; {{ date('Y') }} {{ config('olr.site_name') }}. {{ __('t.data_powered_by') }} <a href="https://oneloftrace.live" target="_blank" class="underline hover:text-white/60">oneloftrace.live</a>
                 <br class="sm:hidden"><span class="hidden sm:inline mx-1">&middot;</span>
-                Want your one loft race website taken to the next level? <a href="{{ route('pages.show', 'developer') }}" class="underline hover:text-white/60">Get in touch</a>.
+                Want your one loft race website taking to the next level? <a href="{{ route('pages.show', 'developer') }}" class="underline hover:text-white/60">Get in touch</a>.
             </div>
         </div>
     </footer>
