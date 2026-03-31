@@ -62,11 +62,18 @@
             </div>
 
             {{-- Weather Cards --}}
-            @if($matchedPoint && !empty($matchedPoint['lat']) && !empty($matchedPoint['lng']))
             @if($flight->status === 'stopped' && $flight->release_time)
-                <p class="text-xs text-gray-400 mt-5 mb-1.5 font-medium"><span class="italic">Race day weather</span> {{ $flight->release_time->format('j M Y') }}</p>
+                <p class="text-xs text-gray-400 mt-5 mb-1.5 font-medium">
+                    @if($flight->flight_type === 'training')
+                        <span class="italic">Weather at the loft</span> {{ $flight->release_time->format('j M Y') }}
+                    @else
+                        <span class="italic">Race day weather</span> {{ $flight->release_time->format('j M Y') }}
+                    @endif
+                </p>
             @endif
-            <div class="grid grid-cols-3 gap-2 max-w-md" x-data="flightWeather()" x-init="fetchWeather()">
+
+            @php $hasLiberation = $matchedPoint && !empty($matchedPoint['lat']) && !empty($matchedPoint['lng']); @endphp
+            <div class="grid {{ $hasLiberation ? 'grid-cols-3' : 'grid-cols-1' }} gap-2 max-w-md" x-data="flightWeather()" x-init="fetchWeather()">
                 {{-- Loft --}}
                 <div class="bg-gray-50 rounded-lg px-3 py-2.5">
                     <div class="text-[9px] uppercase tracking-wider text-gray-400 font-bold mb-1.5">Loft</div>
@@ -86,6 +93,7 @@
                     <template x-if="!loft.loaded"><div class="animate-pulse"><div class="h-6 w-12 bg-gray-200 rounded"></div></div></template>
                 </div>
 
+                @if($hasLiberation)
                 {{-- Liberation --}}
                 <div class="bg-gray-50 rounded-lg px-3 py-2.5">
                     <div class="text-[9px] uppercase tracking-wider text-gray-400 font-bold mb-1.5">{{ $matchedPoint['name'] ?? 'Liberation' }}</div>
@@ -122,8 +130,8 @@
                     </template>
                     <template x-if="!windAnalysis.loaded"><div class="animate-pulse"><div class="h-6 w-12 bg-gray-200 rounded"></div></div></template>
                 </div>
+                @endif
             </div>
-            @endif
         </div>
 
         {{-- Results Section --}}
@@ -207,7 +215,7 @@
                                           :style="r.pos <= 10 ? 'background: var(--accent)' : ''"
                                           x-text="r.pos"></span>
                                 </td>
-                                <td class="px-3 py-3 font-mono text-xs font-medium text-gray-700" x-text="r.ring"></td>
+                                <td class="px-3 py-3 font-mono text-xs font-medium text-gray-700 whitespace-nowrap" x-text="r.ring"></td>
                                 <td class="px-3 py-3">
                                     <div class="flex items-center gap-2">
                                         <template x-if="r.country">
@@ -244,11 +252,11 @@
 
     </div>
 
-    @if($matchedPoint && !empty($matchedPoint['lat']) && !empty($matchedPoint['lng']))
     <script>
     function flightWeather() {
-        const libLat = {{ $matchedPoint['lat'] }};
-        const libLng = {{ $matchedPoint['lng'] }};
+        const hasLiberation = {{ ($matchedPoint && !empty($matchedPoint['lat']) && !empty($matchedPoint['lng'])) ? 'true' : 'false' }};
+        const libLat = {{ $matchedPoint['lat'] ?? $loftLat }};
+        const libLng = {{ $matchedPoint['lng'] ?? $loftLng }};
         const loftLat = {{ $loftLat }};
         const loftLng = {{ $loftLng }};
         const flightDate = '{{ $flight->release_time ? $flight->release_time->format("Y-m-d") : "" }}';
@@ -278,15 +286,13 @@
             const routeBearing = bearingFromTo(libLat,libLng,loftLat,loftLng);
             let angleDiff = Math.abs(windDeg - routeBearing);
             if (angleDiff > 180) angleDiff = 360 - angleDiff;
-            let label,detail,colorClass,barClass,strength;
-            // strength = wind speed as % of scale (0-40mph range), bar shows how strong the wind is
-            const speedPct = Math.min(100, (windSpeed / 40) * 100);
+            let label,detail,colorClass,barClass;
+            const strength = Math.min(100, (windSpeed / 40) * 100);
             if (angleDiff <= 30) { label='Tailwind'; detail='Wind pushing birds home'; colorClass='text-green-600'; barClass='bg-green-500'; }
             else if (angleDiff <= 60) { label='Tail/Cross'; detail='Helpful crosswind'; colorClass='text-green-500'; barClass='bg-green-400'; }
             else if (angleDiff <= 90) { label='Crosswind'; detail='Wind across the route'; colorClass='text-yellow-500'; barClass='bg-yellow-400'; }
             else if (angleDiff <= 150) { label='Head/Cross'; detail='Difficult crosswind'; colorClass='text-orange-500'; barClass='bg-orange-400'; }
             else { label='Headwind'; detail='Wind against the birds'; colorClass='text-red-500'; barClass='bg-red-400'; }
-            strength = speedPct;
             return { label, detail, colorClass, barClass, strength, loaded: true };
         }
 
@@ -294,14 +300,14 @@
             const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&current=temperature_2m,weather_code,wind_speed_10m,wind_direction_10m&wind_speed_unit=mph&timezone=auto`;
             const res = await fetch(url); const data = await res.json(); const c = data.current;
             const [desc,icon] = wmoMap[c.weather_code]||['Unknown','03d'];
-            return { temp:Math.round(c.temperature_2m), windSpeed:Math.round(c.wind_speed_10m), windDeg:c.wind_direction_10m, windDir:degToCompass(c.wind_direction_10m), icon, loaded:true };
+            return { temp:Math.round(c.temperature_2m), windSpeed:Math.round(c.wind_speed_10m), windDeg:c.wind_direction_10m, windDir:degToCompass(c.wind_direction_10m), description:desc, icon, loaded:true };
         }
 
         async function fetchHistorical(lat, lng, date) {
             const url = `https://archive-api.open-meteo.com/v1/archive?latitude=${lat}&longitude=${lng}&start_date=${date}&end_date=${date}&hourly=temperature_2m,weather_code,wind_speed_10m,wind_direction_10m&wind_speed_unit=mph&timezone=auto`;
             const res = await fetch(url); const data = await res.json(); const h = data.hourly;
             const [desc,icon] = wmoMap[h.weather_code[12]]||['Unknown','03d'];
-            return { temp:Math.round(h.temperature_2m[12]), windSpeed:Math.round(h.wind_speed_10m[12]), windDeg:h.wind_direction_10m[12], windDir:degToCompass(h.wind_direction_10m[12]), icon, loaded:true };
+            return { temp:Math.round(h.temperature_2m[12]), windSpeed:Math.round(h.wind_speed_10m[12]), windDeg:h.wind_direction_10m[12], windDir:degToCompass(h.wind_direction_10m[12]), description:desc, icon, loaded:true };
         }
 
         return {
@@ -311,14 +317,17 @@
             async fetchWeather() {
                 try {
                     const fetcher = isCompleted && flightDate ? (lat,lng) => fetchHistorical(lat,lng,flightDate) : fetchCurrent;
-                    const [lib, loftData] = await Promise.all([fetcher(libLat,libLng), fetcher(loftLat,loftLng)]);
-                    this.liberation = lib;
+                    const loftData = await fetcher(loftLat, loftLng);
                     this.loft = loftData;
-                    this.windAnalysis = analyseWind(lib.windDeg, lib.windSpeed);
+
+                    if (hasLiberation) {
+                        const lib = await fetcher(libLat, libLng);
+                        this.liberation = lib;
+                        this.windAnalysis = analyseWind(lib.windDeg, lib.windSpeed);
+                    }
                 } catch(e) { console.error('Weather fetch failed', e); }
             }
         };
     }
     </script>
-    @endif
 @endsection
