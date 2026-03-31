@@ -32,11 +32,13 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
                 <div>
                     <label for="entry_max_birds" class="block text-sm font-medium text-gray-700 mb-1">Max Birds Per Entry</label>
-                    <input type="number" id="entry_max_birds" name="entry_max_birds" value="{{ $settings['entry_max_birds'] }}" min="1" max="50" required
-                           class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm">
+                    <input type="number" id="entry_max_birds" name="entry_max_birds" value="{{ $settings['entry_max_birds'] }}" min="1"
+                           class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
+                           placeholder="Leave blank for unlimited">
+                    <p class="text-xs text-gray-400 mt-1">Leave blank for unlimited.</p>
                 </div>
                 <div>
                     <label for="entry_deadline" class="block text-sm font-medium text-gray-700 mb-1">Entry Deadline</label>

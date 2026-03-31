@@ -279,8 +279,8 @@
     <script>
     function entryForm() {
         return {
-            defaultMaxBirds: {{ $settings['max_birds'] }},
-            maxBirds: {{ $settings['max_birds'] }},
+            defaultMaxBirds: {{ $settings['max_birds'] ?: 999 }},
+            maxBirds: {{ $settings['max_birds'] ?: 999 }},
             perBirdFee: {{ $settings['fee'] }},
             birds: [{ ring_number: '', pigeon_name: '' }],
             offers: @json($offers ?? []),

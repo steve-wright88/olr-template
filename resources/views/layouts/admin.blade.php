@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Admin') | {{ config('olr.site_name') }}</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800,900|space-grotesk:500,600,700" rel="stylesheet">
+    <link href="https://fonts.bunny.net/css?family=roboto:400,500,600,700,800,900|space-grotesk:500,600,700" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         :root {
@@ -30,7 +30,7 @@
                     plugins: 'lists link table code autolink',
                     toolbar: 'undo redo | blocks | bold italic | bullist numlist | table | link | code',
                     block_formats: 'Paragraph=p; Heading 2=h2; Heading 3=h3; Heading 4=h4',
-                    content_style: "body { font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #374151; } h2 { font-size: 1.5em; font-weight: 700; } h3 { font-size: 1.25em; font-weight: 700; } table { border-collapse: collapse; width: 100%; } th, td { border: 1px solid #d1d5db; padding: 8px 12px; text-align: left; } th { background: #f3f4f6; font-weight: 600; }",
+                    content_style: "body { font-family: 'Roboto', sans-serif; font-size: 15px; line-height: 1.6; color: #374151; } h2 { font-size: 1.5em; font-weight: 700; } h3 { font-size: 1.25em; font-weight: 700; } table { border-collapse: collapse; width: 100%; } th, td { border: 1px solid #d1d5db; padding: 8px 12px; text-align: left; } th { background: #f3f4f6; font-weight: 600; }",
                     table_default_attributes: { border: '1' },
                     table_default_styles: { width: '100%', borderCollapse: 'collapse' },
                     setup: function(editor) {
@@ -115,6 +115,11 @@
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
                     Entries
                 </a>
+                <a href="{{ route('admin.entry-settings') }}"
+                   class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium {{ request()->routeIs('admin.entry-settings*') ? 'bg-white/10 text-white' : 'text-gray-400 hover:text-white hover:bg-white/5' }} transition-colors pl-8">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    Entry Settings
+                </a>
                 <a href="{{ route('admin.offers.index') }}"
                    class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium {{ request()->routeIs('admin.offers.*') ? 'bg-white/10 text-white' : 'text-gray-400 hover:text-white hover:bg-white/5' }} transition-colors">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg>
@@ -182,6 +187,7 @@
                     <a href="{{ route('admin.settings.race-map') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium {{ request()->routeIs('admin.settings.race-map') ? 'bg-white/10 text-white' : 'text-gray-400 hover:text-white hover:bg-white/5' }}">Race Program</a>
                     <a href="{{ route('admin.prizes.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium {{ request()->routeIs('admin.prizes.*') ? 'bg-white/10 text-white' : 'text-gray-400 hover:text-white hover:bg-white/5' }}">Prize Money</a>
                     <a href="{{ route('admin.entries.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium {{ request()->routeIs('admin.entries.*') || request()->routeIs('admin.entry-settings*') ? 'bg-white/10 text-white' : 'text-gray-400 hover:text-white hover:bg-white/5' }}">Entries</a>
+                    <a href="{{ route('admin.entry-settings') }}" class="flex items-center gap-3 px-3 py-2.5 pl-8 rounded-lg text-sm font-medium {{ request()->routeIs('admin.entry-settings*') ? 'bg-white/10 text-white' : 'text-gray-400 hover:text-white hover:bg-white/5' }}">Entry Settings</a>
                     <a href="{{ route('admin.offers.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium {{ request()->routeIs('admin.offers.*') ? 'bg-white/10 text-white' : 'text-gray-400 hover:text-white hover:bg-white/5' }}">Offers</a>
                     <a href="{{ route('admin.entry-pdf') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium {{ request()->routeIs('admin.entry-pdf*') ? 'bg-white/10 text-white' : 'text-gray-400 hover:text-white hover:bg-white/5' }}">Entry Form PDF</a>
                     <a href="{{ route('admin.pool-pdf') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium {{ request()->routeIs('admin.pool-pdf*') ? 'bg-white/10 text-white' : 'text-gray-400 hover:text-white hover:bg-white/5' }}">Pool PDFs</a>

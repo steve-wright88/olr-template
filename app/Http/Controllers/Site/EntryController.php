@@ -66,7 +66,7 @@ class EntryController extends Controller
             'team_name' => 'nullable|string|max:255',
             'notes' => 'nullable|string|max:1000',
             'offer_id' => 'nullable|integer|exists:entry_offers,id',
-            'birds' => 'required|array|min:1|max:' . $maxBirds,
+            'birds' => 'required|array|min:1',
             'birds.*.ring_number' => 'required|string|max:50',
             'birds.*.pigeon_name' => 'nullable|string|max:100',
         ], [
