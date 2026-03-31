@@ -185,7 +185,10 @@ class EntrySettingController extends Controller
         $pdfFields = json_decode(Setting::get('entry_pdf_fields', '{}'), true);
         $fields = array_merge($this->pdfFieldDefaults, $pdfFields);
 
-        $pdf = Pdf::loadView('pdf.entry-form', compact('settings', 'site', 'logoBase64', 'bannerBase64', 'fields'));
+        // Active offers
+        $offers = \App\Models\EntryOffer::active()->ordered()->get();
+
+        $pdf = Pdf::loadView('pdf.entry-form', compact('settings', 'site', 'logoBase64', 'bannerBase64', 'fields', 'offers'));
         $pdf->setPaper('a4');
 
         File::ensureDirectoryExists(public_path('downloads'));

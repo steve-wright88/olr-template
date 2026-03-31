@@ -58,7 +58,7 @@
 
         <div class="mb-8 flex flex-wrap gap-2">
             @if($settings['deadline'])
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-white" style="background: var(--accent);">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-white bg-red-600">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                     {{ __('t.entry_deadline') }}: {{ \Carbon\Carbon::parse($settings['deadline'])->format('j F Y') }}
                 </div>
@@ -74,53 +74,16 @@
 
         {{-- Entry Form --}}
         @if($entriesOpen)
-            <form id="entry-form" method="POST" action="{{ route('enter.store') }}" x-data="{
-                defaultMaxBirds: {{ $settings['max_birds'] }},
-                maxBirds: {{ $settings['max_birds'] }},
-                perBirdFee: {{ $settings['fee'] }},
-                birds: [{ ring_number: '', pigeon_name: '' }],
-                offers: @json($offers),
-                selectedOffer: null,
-                get activeOffer() {
-                    if (!this.selectedOffer) return null;
-                    return this.offers.find(o => o.id == this.selectedOffer);
-                },
-                get totalFee() {
-                    if (this.activeOffer) {
-                        return parseFloat(this.activeOffer.price);
-                    }
-                    return this.birds.length * this.perBirdFee;
-                },
-                selectOffer(id) {
-                    if (this.selectedOffer == id) {
-                        this.selectedOffer = null;
-                        this.maxBirds = this.defaultMaxBirds;
-                    } else {
-                        this.selectedOffer = id;
-                        let offer = this.offers.find(o => o.id == id);
-                        if (offer) {
-                            this.maxBirds = offer.number_of_birds + offer.bonus_birds;
-                        }
-                    }
-                    // Trim birds if over new max
-                    while (this.birds.length > this.maxBirds) {
-                        this.birds.pop();
-                    }
-                },
-                addBird() {
-                    if (this.birds.length < this.maxBirds) {
-                        this.birds.push({ ring_number: '', pigeon_name: '' });
-                    }
-                },
-                removeBird(index) {
-                    if (this.birds.length > 1) {
-                        this.birds.splice(index, 1);
-                    }
-                }
-            }">
+            <form id="entry-form" method="POST" action="{{ route('enter.store') }}" x-data="entryForm()" x-cloak>
                 @csrf
 
-                <h2 class="text-xl font-bold text-gray-900 border-b border-gray-200 pb-3 mb-6">{{ __('t.online_entry_form') }}</h2>
+                <div class="flex items-center justify-between border-b border-gray-200 pb-3 mb-6">
+                    <h2 class="text-xl font-bold text-gray-900">{{ __('t.online_entry_form') }}</h2>
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gray-100 text-gray-700">
+                        <span class="text-lg font-bold">{{ $settings['currency'] }}{{ $settings['fee'] }}</span>
+                        <span class="text-sm text-gray-500">{{ __('t.per_bird') }}</span>
+                    </div>
+                </div>
 
                 {{-- Validation errors --}}
                 @if($errors->any())
@@ -197,8 +160,8 @@
                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:border-transparent" style="--tw-ring-color: var(--accent);">
                         </div>
                         <div>
-                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">{{ __('t.phone') }}</label>
-                            <input type="tel" id="phone" name="phone" value="{{ old('phone') }}"
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">{{ __('t.phone') }} <span class="text-red-500">*</span></label>
+                            <input type="tel" id="phone" name="phone" value="{{ old('phone') }}" required
                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:border-transparent" style="--tw-ring-color: var(--accent);">
                         </div>
                     </div>
@@ -274,10 +237,10 @@
                     </div>
                     <p class="text-xs text-gray-400 mt-1">
                         <template x-if="activeOffer">
-                            <span>Package price for <span x-text="activeOffer.number_of_birds + (activeOffer.bonus_birds > 0 ? ' + ' + activeOffer.bonus_birds + ' free' : '')"></span> bird(s). Payment details will be sent in your confirmation email.</span>
+                            <span>Package price for <span x-text="activeOffer.number_of_birds + (activeOffer.bonus_birds > 0 ? ' + ' + activeOffer.bonus_birds + ' free' : '')"></span> bird(s). Someone will be in touch shortly with payment details.</span>
                         </template>
                         <template x-if="!activeOffer">
-                            <span>Total based on <span x-text="birds.length"></span> bird(s). Payment details will be sent in your confirmation email.</span>
+                            <span>Total based on <span x-text="birds.length"></span> bird(s). Someone will be in touch shortly with payment details.</span>
                         </template>
                     </p>
                 </div>
@@ -312,4 +275,56 @@
             </div>
         </div>
     @endif
+
+    <script>
+    function entryForm() {
+        return {
+            defaultMaxBirds: {{ $settings['max_birds'] }},
+            maxBirds: {{ $settings['max_birds'] }},
+            perBirdFee: {{ $settings['fee'] }},
+            birds: [{ ring_number: '', pigeon_name: '' }],
+            offers: @json($offers ?? []),
+            selectedOffer: null,
+
+            get activeOffer() {
+                if (!this.selectedOffer) return null;
+                return this.offers.find(o => o.id == this.selectedOffer);
+            },
+
+            get totalFee() {
+                if (this.activeOffer) return parseFloat(this.activeOffer.price);
+                return this.birds.length * this.perBirdFee;
+            },
+
+            selectOffer(id) {
+                if (this.selectedOffer == id) {
+                    this.selectedOffer = null;
+                    this.maxBirds = this.defaultMaxBirds;
+                    this.birds = [{ ring_number: '', pigeon_name: '' }];
+                } else {
+                    this.selectedOffer = id;
+                    let offer = this.offers.find(o => o.id == id);
+                    if (offer) {
+                        this.maxBirds = offer.number_of_birds + offer.bonus_birds;
+                        // Auto-generate bird rows for the package
+                        this.birds = [];
+                        for (let i = 0; i < this.maxBirds; i++) {
+                            this.birds.push({ ring_number: '', pigeon_name: '' });
+                        }
+                    }
+                }
+            },
+
+            addBird() {
+                if (this.birds.length < this.maxBirds) {
+                    this.birds.push({ ring_number: '', pigeon_name: '' });
+                }
+            },
+
+            removeBird(index) {
+                if (this.birds.length > 1) { this.birds.splice(index, 1); }
+            }
+        };
+    }
+    </script>
 @endsection

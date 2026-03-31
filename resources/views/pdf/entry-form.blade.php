@@ -235,6 +235,30 @@
             </table>
         @endif
 
+        {{-- Offers --}}
+        @if($offers->isNotEmpty())
+            <div style="margin-bottom: 8px;">
+                <div class="section-title">Entry Packages</div>
+                <table style="width: 100%; border-collapse: collapse; margin-top: 3px;">
+                    <tr style="background: {{ $site['primary'] }};">
+                        <td style="color: white; font-size: 6.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 8px;">Package</td>
+                        <td style="color: white; font-size: 6.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 8px; text-align: center;">Birds</td>
+                        <td style="color: white; font-size: 6.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 8px; text-align: center;">Bonus</td>
+                        <td style="color: white; font-size: 6.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 8px; text-align: right;">Price</td>
+                    </tr>
+                    @foreach($offers as $offer)
+                        <tr>
+                            <td style="padding: 4px 8px; font-size: 8pt; font-weight: 600; border-bottom: 1px solid #e8e8e8;">{{ $offer->name }}</td>
+                            <td style="padding: 4px 8px; font-size: 8pt; text-align: center; border-bottom: 1px solid #e8e8e8;">{{ $offer->number_of_birds }}</td>
+                            <td style="padding: 4px 8px; font-size: 8pt; text-align: center; border-bottom: 1px solid #e8e8e8; color: {{ $offer->bonus_birds > 0 ? '#16a34a' : '#999' }};">{{ $offer->bonus_birds > 0 ? '+' . $offer->bonus_birds . ' FREE' : '-' }}</td>
+                            <td style="padding: 4px 8px; font-size: 8pt; text-align: right; font-weight: 700; border-bottom: 1px solid #e8e8e8; color: {{ $site['accent'] }};">{{ $settings['currency'] }}{{ number_format($offer->price, 2) }}</td>
+                        </tr>
+                    @endforeach
+                </table>
+                <p style="font-size: 6.5pt; color: #999; margin-top: 3px;">Or enter at {{ $settings['currency'] }}{{ $settings['fee'] }} per bird without a package.</p>
+            </div>
+        @endif
+
         @if($settings['notes'])
             <div class="notes">{!! nl2br(e($settings['notes'])) !!}</div>
         @endif

@@ -62,7 +62,7 @@ class EntryController extends Controller
             'syndicate_name' => 'nullable|string|max:255',
             'flyer_name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'phone' => 'nullable|string|max:50',
+            'phone' => 'required|string|max:50',
             'team_name' => 'nullable|string|max:255',
             'notes' => 'nullable|string|max:1000',
             'offer_id' => 'nullable|integer|exists:entry_offers,id',
