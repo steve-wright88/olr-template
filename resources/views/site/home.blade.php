@@ -6,7 +6,7 @@
     {{-- Banner --}}
     @if(config('olr.banner') && file_exists(public_path(config('olr.banner'))))
         <section class="border-b border-gray-200">
-            <img src="{{ asset(config('olr.banner')) }}" alt="{{ config('olr.site_name') }}" class="w-full h-auto">
+            <img src="{{ asset(config('olr.banner')) }}" alt="{{ config('olr.site_name') }}" class="w-full h-48 sm:h-64 lg:h-auto object-cover object-center">
         </section>
     @endif
 
@@ -29,10 +29,10 @@
     {{-- Sponsor --}}
     @if(config('olr.sponsor_image') && file_exists(public_path(config('olr.sponsor_image'))))
         <div class="border-b border-gray-200 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-center gap-3">
-                <span class="text-sm uppercase tracking-wider text-gray-500 font-medium">{{ __('t.sponsored_by') }}</span>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-3 flex items-center justify-center gap-2 sm:gap-3">
+                <span class="text-[10px] sm:text-sm uppercase tracking-wider text-gray-400 font-medium">{{ __('t.sponsored_by') }}</span>
                 <a href="{{ config('olr.sponsor_url', '#') }}" target="_blank" rel="noopener">
-                    <img src="{{ asset(config('olr.sponsor_image')) }}" alt="{{ config('olr.sponsor_name', 'Sponsor') }}" class="h-16 object-contain">
+                    <img src="{{ asset(config('olr.sponsor_image')) }}" alt="{{ config('olr.sponsor_name', 'Sponsor') }}" class="h-10 sm:h-16 object-contain">
                 </a>
             </div>
         </div>

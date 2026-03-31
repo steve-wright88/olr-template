@@ -64,7 +64,7 @@
             <div class="flex-1 min-w-0">
                 <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight">{{ $flight->name }}</h2>
 
-                <div class="flex flex-wrap items-center gap-x-6 gap-y-2 mt-3">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-wrap lg:items-center gap-x-6 gap-y-2.5 mt-4">
                     @if($point && !empty($point['distance']))
                         <div class="flex items-center gap-2">
                             <svg class="w-4 h-4 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
@@ -108,7 +108,7 @@
 
             {{-- Weather Cards --}}
             @if($hasCoords)
-            <div class="flex flex-col items-end flex-shrink-0">
+            <div class="flex flex-col items-center lg:items-end flex-shrink-0 w-full lg:w-auto">
                 <p class="text-xs text-white/90 mb-2 text-center lg:text-right font-medium">
                     @if($mode === 'result' && $flight->release_time)
                         <span class="italic">Race day weather</span> {{ \Carbon\Carbon::parse($flight->release_time)->format('j M Y') }}
@@ -117,30 +117,6 @@
                     @endif
                 </p>
                 <div class="grid grid-cols-3 gap-2 sm:gap-3 lg:flex lg:flex-nowrap">
-                    {{-- Liberation Point Weather --}}
-                    <div class="bg-white/10 backdrop-blur-sm rounded-lg sm:rounded-xl px-3 py-2.5 sm:px-5 sm:py-4 lg:min-w-[170px] border border-white/5">
-                        <div class="text-[9px] sm:text-[10px] uppercase tracking-wider text-white/40 font-bold mb-1.5 sm:mb-2">{{ $point['name'] ?? 'Liberation' }}</div>
-                        <template x-if="liberation.loaded">
-                            <div>
-                                <div class="flex items-center gap-1 sm:gap-2">
-                                    <span class="text-xl sm:text-3xl font-black text-white" x-text="liberation.temp + '°'"></span>
-                                    <img :src="'https://openweathermap.org/img/wn/' + liberation.icon + '.png'" class="w-7 h-7 sm:w-10 sm:h-10" alt="" x-show="liberation.icon">
-                                </div>
-                                <div class="flex items-center gap-1 sm:gap-1.5 mt-1">
-                                    <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white/50 transition-transform" :style="'transform: rotate(' + liberation.windDeg + 'deg)'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
-                                    <span class="text-[10px] sm:text-xs font-semibold text-white/50" x-text="liberation.windSpeed + ' mph ' + liberation.windDir"></span>
-                                </div>
-                                <div class="hidden sm:block text-[11px] text-white/35 mt-0.5" x-text="liberation.description"></div>
-                            </div>
-                        </template>
-                        <template x-if="!liberation.loaded">
-                            <div class="animate-pulse space-y-2">
-                                <div class="h-6 sm:h-8 w-12 sm:w-16 bg-white/10 rounded"></div>
-                                <div class="h-3 w-16 sm:w-24 bg-white/10 rounded"></div>
-                            </div>
-                        </template>
-                    </div>
-
                     {{-- Loft Weather --}}
                     <div class="bg-white/10 backdrop-blur-sm rounded-lg sm:rounded-xl px-3 py-2.5 sm:px-5 sm:py-4 lg:min-w-[170px] border border-white/5">
                         <div class="text-[9px] sm:text-[10px] uppercase tracking-wider text-white/40 font-bold mb-1.5 sm:mb-2">{{ __('t.loft') }}</div>
@@ -158,6 +134,30 @@
                             </div>
                         </template>
                         <template x-if="!loft.loaded">
+                            <div class="animate-pulse space-y-2">
+                                <div class="h-6 sm:h-8 w-12 sm:w-16 bg-white/10 rounded"></div>
+                                <div class="h-3 w-16 sm:w-24 bg-white/10 rounded"></div>
+                            </div>
+                        </template>
+                    </div>
+
+                    {{-- Liberation Point Weather --}}
+                    <div class="bg-white/10 backdrop-blur-sm rounded-lg sm:rounded-xl px-3 py-2.5 sm:px-5 sm:py-4 lg:min-w-[170px] border border-white/5">
+                        <div class="text-[9px] sm:text-[10px] uppercase tracking-wider text-white/40 font-bold mb-1.5 sm:mb-2">{{ $point['name'] ?? 'Liberation' }}</div>
+                        <template x-if="liberation.loaded">
+                            <div>
+                                <div class="flex items-center gap-1 sm:gap-2">
+                                    <span class="text-xl sm:text-3xl font-black text-white" x-text="liberation.temp + '°'"></span>
+                                    <img :src="'https://openweathermap.org/img/wn/' + liberation.icon + '.png'" class="w-7 h-7 sm:w-10 sm:h-10" alt="" x-show="liberation.icon">
+                                </div>
+                                <div class="flex items-center gap-1 sm:gap-1.5 mt-1">
+                                    <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white/50 transition-transform" :style="'transform: rotate(' + liberation.windDeg + 'deg)'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+                                    <span class="text-[10px] sm:text-xs font-semibold text-white/50" x-text="liberation.windSpeed + ' mph ' + liberation.windDir"></span>
+                                </div>
+                                <div class="hidden sm:block text-[11px] text-white/35 mt-0.5" x-text="liberation.description"></div>
+                            </div>
+                        </template>
+                        <template x-if="!liberation.loaded">
                             <div class="animate-pulse space-y-2">
                                 <div class="h-6 sm:h-8 w-12 sm:w-16 bg-white/10 rounded"></div>
                                 <div class="h-3 w-16 sm:w-24 bg-white/10 rounded"></div>
