@@ -151,7 +151,8 @@
         @php
             $analysisFlightCount = ($flights['completed'] ?? collect())->count();
         @endphp
-        <a href="#analysis" class="block w-full rounded-xl py-4 text-center font-bold text-white transition-all hover:shadow-lg hover:scale-[1.005]" style="background: var(--accent);">
+        <a href="#analysis" onclick="event.preventDefault(); document.getElementById('analysis').scrollIntoView({behavior:'smooth'}); setTimeout(() => window.scrollBy(0, -80), 300);"
+           class="block w-full rounded-xl py-4 text-center font-bold text-white transition-all hover:shadow-lg hover:scale-[1.005]" style="background: var(--accent);">
             <svg class="inline-block w-5 h-5 mr-2 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
             {{ __('t.analyse_performance') }}
             <span class="ml-1 text-white/70 font-normal text-sm">{{ __('t.across_flights', ['count' => $analysisFlightCount]) }}</span>
@@ -232,7 +233,7 @@
                         class="bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]/20">
                     <option value="">{{ __('t.all_countries') }}</option>
                     <template x-for="c in countries" :key="c">
-                        <option :value="c" x-text="c"></option>
+                        <option :value="c" x-text="countryName(c)"></option>
                     </template>
                 </select>
                 <input type="text" x-model="search" @input="resetPage()"
@@ -281,7 +282,7 @@
                         <tbody>
                             <tr class="border-b border-gray-100 hover:bg-gray-50 cursor-pointer transition-colors"
                                 @click="toggle(bird.pigeonId)">
-                                <td class="px-4 py-2.5 font-mono text-xs font-medium text-gray-700" x-text="bird.ring"></td>
+                                <td class="px-4 py-2.5 font-mono text-xs font-medium text-gray-700 whitespace-nowrap" x-text="bird.ring"></td>
                                 <td class="px-3 py-2.5">
                                     <div class="flex items-center gap-2">
                                         <template x-if="bird.country">
@@ -399,6 +400,21 @@ function analysisApp() {
         countries: [],
         loading: true,
         _flagMap: { 'WA': 'gb-wls', 'XS': 'gb-sct', 'EN': 'gb-eng', 'NI': 'gb-nir' },
+        _countryNames: {
+            'GB':'United Kingdom','EN':'England','WA':'Wales','XS':'Scotland','NI':'Northern Ireland',
+            'IE':'Ireland','DE':'Germany','NL':'Netherlands','BE':'Belgium','FR':'France',
+            'DK':'Denmark','SE':'Sweden','NO':'Norway','FI':'Finland','PL':'Poland',
+            'CZ':'Czech Republic','SK':'Slovakia','HU':'Hungary','RO':'Romania','BG':'Bulgaria',
+            'HR':'Croatia','SI':'Slovenia','RS':'Serbia','BA':'Bosnia','MK':'North Macedonia',
+            'AL':'Albania','GR':'Greece','TR':'Turkey','CY':'Cyprus','MT':'Malta',
+            'IT':'Italy','ES':'Spain','PT':'Portugal','AT':'Austria','CH':'Switzerland',
+            'LU':'Luxembourg','LT':'Lithuania','LV':'Latvia','EE':'Estonia',
+            'US':'United States','CA':'Canada','ZA':'South Africa','AU':'Australia','NZ':'New Zealand',
+            'JP':'Japan','CN':'China','TW':'Taiwan','KR':'South Korea','TH':'Thailand',
+            'AE':'UAE','SA':'Saudi Arabia','KW':'Kuwait','QA':'Qatar','BH':'Bahrain',
+            'LB':'Lebanon','JO':'Jordan','IQ':'Iraq','EG':'Egypt','LY':'Libya',
+        },
+        countryName(c) { return this._countryNames[c] || c; },
         flagCode(c) { return this._flagMap[c] || c.toLowerCase(); },
 
         init() {
@@ -496,5 +512,25 @@ function analysisApp() {
     };
 }
 </script>
+@endif
+
+{{-- Mobile sticky CTA for bird analysis --}}
+@if($season && ($flights['completed'] ?? collect())->isNotEmpty())
+<div class="fixed bottom-4 left-4 right-4 z-40 lg:hidden" x-data="{ show: false, dismissed: false }" x-init="
+    const analysis = document.getElementById('analysis');
+    if (analysis) {
+        const observer = new IntersectionObserver(([e]) => { show = !e.isIntersecting && !dismissed; }, { threshold: 0 });
+        observer.observe(analysis);
+        show = true;
+    }
+">
+    <a href="#analysis" x-show="show" x-transition
+       @click.prevent="dismissed = true; show = false; document.getElementById('analysis').scrollIntoView({behavior:'smooth'}); setTimeout(() => window.scrollBy(0, -80), 300);"
+       class="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-bold text-white text-sm shadow-lg"
+       style="background: var(--accent);">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        Bird Performance ↓
+    </a>
+</div>
 @endif
 @endsection
