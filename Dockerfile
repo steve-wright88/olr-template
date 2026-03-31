@@ -1,18 +1,19 @@
 FROM php:8.4-cli
 
-# Install system dependencies
+# Install system dependencies (SQLite + PostgreSQL support)
 RUN apt-get update && apt-get install -y \
     git \
     curl \
     libpng-dev \
     libonig-dev \
     libxml2-dev \
+    libpq-dev \
     zip \
     unzip \
     libsqlite3-dev \
     nodejs \
     npm \
-    && docker-php-ext-install pdo pdo_sqlite mbstring exif pcntl bcmath gd \
+    && docker-php-ext-install pdo pdo_sqlite pdo_pgsql mbstring exif pcntl bcmath gd \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install Composer
@@ -42,6 +43,10 @@ RUN cp .env.example .env \
     && php artisan route:cache \
     && php artisan view:cache
 
+# Start script: run migrations + seed if needed, then serve
+RUN printf '#!/bin/bash\nphp artisan migrate --force --seed 2>/dev/null || php artisan migrate --force\nphp artisan serve --host=0.0.0.0 --port=8080\n' > /start.sh \
+    && chmod +x /start.sh
+
 EXPOSE 8080
 
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"]
+CMD ["/start.sh"]

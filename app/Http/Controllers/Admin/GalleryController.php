@@ -29,8 +29,11 @@ class GalleryController extends Controller
         $category = $request->input('category') ?: $request->input('new_category');
 
         foreach ($request->file('photos') as $file) {
+            $filename = uniqid() . '_' . $file->hashName();
+            $file->move(public_path('images/gallery'), $filename);
+
             GalleryPhoto::create([
-                'path' => $file->store('gallery', 'public'),
+                'path' => 'images/gallery/' . $filename,
                 'category' => $category,
                 'sort_order' => 0,
             ]);

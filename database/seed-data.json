@@ -1,0 +1,1010 @@
+{
+    "settings": [
+        {
+            "id": 1,
+            "key": "entry_year",
+            "value": "2026",
+            "created_at": "2026-03-30 14:57:59",
+            "updated_at": "2026-03-30 14:57:59"
+        },
+        {
+            "id": 2,
+            "key": "entry_fee",
+            "value": "150",
+            "created_at": "2026-03-30 14:57:59",
+            "updated_at": "2026-03-30 14:57:59"
+        },
+        {
+            "id": 3,
+            "key": "entry_currency",
+            "value": "£",
+            "created_at": "2026-03-30 14:57:59",
+            "updated_at": "2026-03-30 14:57:59"
+        },
+        {
+            "id": 4,
+            "key": "entry_max_birds",
+            "value": null,
+            "created_at": "2026-03-30 14:57:59",
+            "updated_at": "2026-03-31 11:27:58"
+        },
+        {
+            "id": 5,
+            "key": "entry_deadline",
+            "value": "2026-04-10",
+            "created_at": "2026-03-30 14:57:59",
+            "updated_at": "2026-03-30 14:57:59"
+        },
+        {
+            "id": 6,
+            "key": "entry_is_open",
+            "value": "1",
+            "created_at": "2026-03-30 14:57:59",
+            "updated_at": "2026-03-30 14:57:59"
+        },
+        {
+            "id": 7,
+            "key": "entry_notes",
+            "value": "All birds must be vaccinated against PMV with an approved vaccine (e.g. Colombavac or Nobilis) a minimum of 10 days before arrival at the loft. Birds should be aged between 35 and 40 days old. A £50 deposit is required for every 3 birds entered.",
+            "created_at": "2026-03-30 14:57:59",
+            "updated_at": "2026-03-30 15:23:17"
+        },
+        {
+            "id": 8,
+            "key": "entry_pdf_intro",
+            "value": "Please complete this form and return it with your birds. Entry fee: £150 per bird. All birds must be PMV vaccinated a minimum of 10 days before arrival. Deadline: 10th April 2026.",
+            "created_at": "2026-03-30 15:00:31",
+            "updated_at": "2026-03-30 15:23:17"
+        },
+        {
+            "id": 9,
+            "key": "homepage_mode",
+            "value": "pre-season",
+            "created_at": "2026-03-30 15:23:17",
+            "updated_at": "2026-03-30 15:23:17"
+        },
+        {
+            "id": 10,
+            "key": "homepage_pigeon_count",
+            "value": "1650",
+            "created_at": "2026-03-30 15:23:17",
+            "updated_at": "2026-03-30 15:23:17"
+        },
+        {
+            "id": 11,
+            "key": "homepage_team_count",
+            "value": "284",
+            "created_at": "2026-03-30 15:23:17",
+            "updated_at": "2026-03-30 15:23:17"
+        },
+        {
+            "id": 12,
+            "key": "homepage_content",
+            "value": "<h2>Who Dares Wins {{year}} - Entries Now Open<\/h2>\n\n<p>Welcome to the {{year}} Who Dares Wins International One Loft Race, operated by <strong>Gary, Annette and Robert Tomlinson<\/strong> at Chapel Farm in the heart of the Derbyshire countryside.<\/p>\n\n<p>Now entering our <strong>14th season<\/strong>, WDW has established itself as one of the most respected and highest-paying one loft races in the UK and Europe, having paid out over <strong>&pound;621,000 in prize money between 2022 and {{year}}<\/strong>.<\/p>\n\n<h3>The {{year}} Season<\/h3>\n\n<p>This year's race programme features <strong>4 qualifying hot spot races<\/strong> from France, building from 230 miles up to 275 miles, followed by the <strong>grand final from Falaise at 292 miles (470 km)<\/strong>. All birds are transported in our purpose-built Geraldy racing trailer and released using our individual liberation system.<\/p>\n\n<p>The loft is open for bird arrivals from <strong>1st February {{year}}<\/strong>, with entries closing on <strong>10th April {{year}}<\/strong>. Entry is <strong>&pound;150 per bird<\/strong>, covering housing, feeding, veterinary care, training, and entry into all races including the grand final.<\/p>\n\n<h3>Our Facility<\/h3>\n\n<p>Chapel Farm sits at <strong>260 feet above sea level<\/strong>, providing excellent conditions for training and racing. Our purpose-built facility comprises <strong>26 individual sections<\/strong>, each fitted with individual drinkers, feeding stations, controlled ventilation, and electronic timing systems. Every bird receives equal treatment and the best possible preparation for race day.<\/p>\n\n<p>All birds at Who Dares Wins are fed on <strong>Vanrobaeys<\/strong> premium racing mixtures, ensuring top-quality nutrition throughout the season.<\/p>\n\n<h3>Get Involved<\/h3>\n\n<p>Whether you are a seasoned one loft enthusiast or entering for the first time, we welcome entries from fanciers across the UK and worldwide. We have agents in several countries who can assist with collecting and shipping your birds.<\/p>\n\n<p><a href=\"\/enter\">Enter your birds online<\/a> or <a href=\"\/page\/contact\">contact us<\/a> for more information. We look forward to another great season of racing at Who Dares Wins.<\/p>",
+            "created_at": "2026-03-30 15:23:17",
+            "updated_at": "2026-03-30 16:07:23"
+        },
+        {
+            "id": 13,
+            "key": "entries_enabled",
+            "value": "1",
+            "created_at": "2026-03-30 15:35:45",
+            "updated_at": "2026-03-30 15:35:45"
+        },
+        {
+            "id": 14,
+            "key": "race_map_loft_lat",
+            "value": "53.05",
+            "created_at": "2026-03-30 15:43:29",
+            "updated_at": "2026-03-30 15:43:29"
+        },
+        {
+            "id": 15,
+            "key": "race_map_loft_lng",
+            "value": "-1.48",
+            "created_at": "2026-03-30 15:43:29",
+            "updated_at": "2026-03-30 15:43:29"
+        },
+        {
+            "id": 16,
+            "key": "race_map_points",
+            "value": "[{\"name\":\"Warwick\",\"lat\":\"52.282\",\"lng\":\"-1.585\",\"distance\":\"51 Miles \\\/ 82 km\",\"date\":\"Sunday 10th August\",\"type\":\"hotspot\"},{\"name\":\"Stow-on-the-Wold\",\"lat\":\"51.932\",\"lng\":\"-1.723\",\"distance\":\"76 Miles \\\/ 122 km\",\"date\":\"Sunday 17th August\",\"type\":\"hotspot\"},{\"name\":\"Marlborough\",\"lat\":\"51.421\",\"lng\":\"-1.729\",\"distance\":\"116 Miles \\\/ 187 km\",\"date\":\"Sunday 24th August\",\"type\":\"hotspot\"},{\"name\":\"Chale\",\"lat\":\"50.593\",\"lng\":\"-1.293\",\"distance\":\"168 Miles \\\/ 270 km\",\"date\":\"Sunday 31st August\",\"type\":\"hotspot\"},{\"name\":\"Falaise\",\"lat\":\"48.895\",\"lng\":\"-0.196\",\"distance\":\"292 Miles \\\/ 470 km\",\"date\":\"Sunday 14th September\",\"type\":\"final\"},{\"name\":\"Guernsey\",\"lat\":\"49.455\",\"lng\":\"-2.540\",\"distance\":\"250 Miles \\\/ 402 km\",\"date\":\"Sunday 28th September\",\"type\":\"super\"}]",
+            "created_at": "2026-03-30 15:43:29",
+            "updated_at": "2026-03-30 15:43:29"
+        },
+        {
+            "id": 17,
+            "key": "season_year",
+            "value": "2026",
+            "created_at": "2026-03-30 16:07:17",
+            "updated_at": "2026-03-30 16:09:15"
+        },
+        {
+            "id": 18,
+            "key": "site_name",
+            "value": "Who Dares Wins",
+            "created_at": "2026-03-30 16:09:07",
+            "updated_at": "2026-03-30 16:09:07"
+        },
+        {
+            "id": 19,
+            "key": "tagline",
+            "value": "International One Loft Race",
+            "created_at": "2026-03-30 16:09:07",
+            "updated_at": "2026-03-30 16:09:07"
+        },
+        {
+            "id": 20,
+            "key": "accent_color",
+            "value": "#2788cf",
+            "created_at": "2026-03-30 16:09:07",
+            "updated_at": "2026-03-30 16:09:07"
+        },
+        {
+            "id": 21,
+            "key": "live_event_enabled",
+            "value": "1",
+            "created_at": "2026-03-30 16:12:29",
+            "updated_at": "2026-03-30 16:12:29"
+        },
+        {
+            "id": 22,
+            "key": "live_event_type",
+            "value": "race",
+            "created_at": "2026-03-30 16:12:29",
+            "updated_at": "2026-03-30 16:12:29"
+        },
+        {
+            "id": 23,
+            "key": "live_event_title",
+            "value": "Hot Spot 1 - Warwick (51 Miles \/ 82 km)",
+            "created_at": "2026-03-30 16:12:29",
+            "updated_at": "2026-03-30 16:12:29"
+        },
+        {
+            "id": 24,
+            "key": "live_event_description",
+            "value": "Liberation at 7:00am. Birds expected home from 8:30am. Individual liberation.",
+            "created_at": "2026-03-30 16:12:29",
+            "updated_at": "2026-03-30 16:12:29"
+        },
+        {
+            "id": 25,
+            "key": "live_event_lat",
+            "value": "52.282",
+            "created_at": "2026-03-30 16:12:29",
+            "updated_at": "2026-03-30 16:12:29"
+        },
+        {
+            "id": 26,
+            "key": "live_event_lng",
+            "value": "-1.585",
+            "created_at": "2026-03-30 16:12:29",
+            "updated_at": "2026-03-30 16:12:29"
+        },
+        {
+            "id": 27,
+            "key": "live_event_liberation_name",
+            "value": "Warwick",
+            "created_at": "2026-03-30 16:12:29",
+            "updated_at": "2026-03-30 16:12:29"
+        },
+        {
+            "id": 28,
+            "key": "contact_email",
+            "value": "who.dares.wins@aol.com",
+            "created_at": "2026-03-30 18:40:59",
+            "updated_at": "2026-03-30 18:40:59"
+        },
+        {
+            "id": 29,
+            "key": "contact_phone",
+            "value": "+44 7368 307667",
+            "created_at": "2026-03-30 18:40:59",
+            "updated_at": "2026-03-30 18:40:59"
+        },
+        {
+            "id": 30,
+            "key": "address",
+            "value": "Chapel Farm, Plains Lane, Blackbrook, Derbyshire DE56 2DD",
+            "created_at": "2026-03-30 18:40:59",
+            "updated_at": "2026-03-30 18:40:59"
+        },
+        {
+            "id": 31,
+            "key": "facebook",
+            "value": "https:\/\/www.facebook.com\/garytomlins666",
+            "created_at": "2026-03-30 18:40:59",
+            "updated_at": "2026-03-30 18:40:59"
+        },
+        {
+            "id": 32,
+            "key": "youtube",
+            "value": null,
+            "created_at": "2026-03-30 18:40:59",
+            "updated_at": "2026-03-30 18:40:59"
+        },
+        {
+            "id": 33,
+            "key": "instagram",
+            "value": null,
+            "created_at": "2026-03-30 18:40:59",
+            "updated_at": "2026-03-30 18:40:59"
+        },
+        {
+            "id": 34,
+            "key": "homepage_latest_flight_id",
+            "value": "55012",
+            "created_at": "2026-03-31 08:51:30",
+            "updated_at": "2026-03-31 08:51:30"
+        },
+        {
+            "id": 35,
+            "key": "pool_hotspot_amounts",
+            "value": "[\"50p\",\"\\u00a31\",\"\\u00a32\",\"\\u00a33\",\"\\u00a35\",\"\\u00a310\"]",
+            "created_at": "2026-03-31 10:30:16",
+            "updated_at": "2026-03-31 10:30:16"
+        },
+        {
+            "id": 36,
+            "key": "pool_race_amounts",
+            "value": "[\"\\u00a32\",\"\\u00a33\",\"\\u00a35\",\"\\u00a310\",\"\\u00a350\",\"\\u00a3100\"]",
+            "created_at": "2026-03-31 10:30:16",
+            "updated_at": "2026-03-31 10:30:16"
+        },
+        {
+            "id": 37,
+            "key": "pool_hotspot_nom",
+            "value": "£5 Nom",
+            "created_at": "2026-03-31 10:30:16",
+            "updated_at": "2026-03-31 10:30:16"
+        },
+        {
+            "id": 38,
+            "key": "pool_race_nom",
+            "value": "£30 Nom",
+            "created_at": "2026-03-31 10:30:16",
+            "updated_at": "2026-03-31 10:30:16"
+        },
+        {
+            "id": 39,
+            "key": "pool_hotspot_footer",
+            "value": "All Pools must be paid in full prior to the liberation, Pools will be paid out 1 in every 10.\r\nThe £5.00 Nomination entry is unlimited e.g you can enter all your birds but it will be the first\r\nNom bird timed which takes all Nom monies ( not paid 1 in 10 )",
+            "created_at": "2026-03-31 10:30:16",
+            "updated_at": "2026-03-31 10:30:16"
+        },
+        {
+            "id": 40,
+            "key": "pool_race_footer",
+            "value": "All Pools must be paid in full prior to the liberation, Pools will be paid out 1 in every 10.\r\nThe £30.00 Nomination entry is unlimited e.g you can enter all your birds but it will be the first\r\nNom bird timed which takes all Nom monies ( not paid 1 in 10 )",
+            "created_at": "2026-03-31 10:30:16",
+            "updated_at": "2026-03-31 10:30:16"
+        },
+        {
+            "id": 41,
+            "key": "pool_pdf_rows",
+            "value": "15",
+            "created_at": "2026-03-31 10:30:16",
+            "updated_at": "2026-03-31 10:30:16"
+        },
+        {
+            "id": 42,
+            "key": "entry_pdf_fields",
+            "value": "{\"syndicate_name\":true,\"flyer_name\":true,\"email\":true,\"phone\":true,\"address\":false,\"country\":false,\"number_of_birds\":true,\"team_name\":true,\"entry_fee\":true,\"acceptance_dates\":true,\"pigeon_name\":true,\"pigeon_sex\":false,\"pigeon_colour\":false}",
+            "created_at": "2026-03-31 10:57:40",
+            "updated_at": "2026-03-31 10:57:40"
+        },
+        {
+            "id": 43,
+            "key": "bird_acceptance_start",
+            "value": "2026-02-01",
+            "created_at": "2026-03-31 10:58:18",
+            "updated_at": "2026-03-31 10:58:18"
+        },
+        {
+            "id": 44,
+            "key": "bird_acceptance_end",
+            "value": "2026-04-10",
+            "created_at": "2026-03-31 10:58:18",
+            "updated_at": "2026-03-31 10:58:18"
+        },
+        {
+            "id": 45,
+            "key": "show_acceptance_dates_site",
+            "value": "1",
+            "created_at": "2026-03-31 10:58:18",
+            "updated_at": "2026-03-31 10:58:18"
+        },
+        {
+            "id": 46,
+            "key": "show_acceptance_dates_pdf",
+            "value": "1",
+            "created_at": "2026-03-31 10:58:18",
+            "updated_at": "2026-03-31 10:58:18"
+        }
+    ],
+    "users": [
+        {
+            "name": "Gary Tomlinson",
+            "email": "admin@whodareswins.com",
+            "password": "$2y$12$ek8v1tz\/2GEnGldypMWAEunsZ7okkIVeDLQetZfmAb17qFFscnR0m"
+        }
+    ],
+    "pages": [
+        {
+            "id": 1,
+            "title": "About",
+            "slug": "about",
+            "body": "<p>Who Dares Wins is a premier one loft pigeon race operated by <strong>Gary, Annette &amp; Robert Tomlinson<\/strong>, established in 2012 at Chapel Farm in the heart of the Derbyshire countryside, United Kingdom.<\/p>\n\n<p>What began as a passion project has grown into one of the most respected one loft races in the UK and Europe. Over the past decade, WDW has built a reputation for transparency, fair racing, and outstanding bird care.<\/p>\n\n<h3>Our Facility<\/h3>\n<img src=\"\/images\/loft_front.jpg\" alt=\"Chapel Farm - Who Dares Wins Loft\" style=\"width:100%; height:350px; object-fit:cover; border-radius:12px; margin: 8px 0 16px;\">\n\n<p>The WDW loft is purpose-built at an elevation of <strong>260 feet above sea level<\/strong>, providing excellent conditions for training and racing. The facility comprises <strong>26 individual sections<\/strong>, allowing birds to be housed in optimal group sizes with plenty of space.<\/p>\n\n<p>Each section is fitted with:<\/p>\n<ul>\n    <li>Individual drinkers and feeding stations<\/li>\n    <li>Controlled ventilation systems<\/li>\n    <li>Perch and nest box arrangements suited to one loft racing<\/li>\n    <li>Electronic timing and clocking systems<\/li>\n<\/ul>\n\n<p>The loft environment is carefully managed to ensure every bird receives equal treatment and the best possible preparation for race day. Birds are exercised daily around the loft and taken on progressive road training tosses throughout the season.<\/p>\n\n<h3>Health &amp; Welfare<\/h3>\n\n<p>Bird welfare is at the centre of everything we do. All birds are placed on a comprehensive health programme from the day they arrive. Regular veterinary checks, vaccinations, and treatments are carried out under the supervision of an experienced avian vet. We operate a strict quarantine procedure for new arrivals.<\/p>\n\n<h3>Our Sponsor<\/h3>\n\n<p>WDW is proudly sponsored by <strong>Vanrobaeys<\/strong>, one of Europe's leading pigeon feed manufacturers. All birds at Who Dares Wins are fed on Vanrobaeys premium racing mixtures, ensuring top-quality nutrition throughout the season.<\/p>\n\n<h3>Our Commitment<\/h3>\n\n<p>We are committed to running a fair, transparent, and exciting one loft race. Every bird is treated equally regardless of its origin, and all results are published promptly. We welcome entries from fanciers worldwide and look forward to another great season of racing.<\/p>",
+            "featured_image": null,
+            "sort_order": 1,
+            "is_published": 1,
+            "created_at": "2026-03-30 13:10:11",
+            "updated_at": "2026-03-31 11:08:16"
+        },
+        {
+            "id": 2,
+            "title": "Prize Money",
+            "slug": "prize-money",
+            "body": "<p style=\"text-align:center;font-size:1.25rem;font-weight:700;color:#2788CF;\">&pound;125,000 Guaranteed if the loft reaches Capacity.<\/p>\n\n<p>Who Dares Wins has paid out over <strong>&pound;621,000 in prize money between 2022 and 2026<\/strong>, making it one of the highest-paying one loft races in the United Kingdom.<\/p>",
+            "featured_image": null,
+            "sort_order": 2,
+            "is_published": 1,
+            "created_at": "2026-03-30 13:10:11",
+            "updated_at": "2026-03-30 20:21:35"
+        },
+        {
+            "id": 3,
+            "title": "Enter Your Birds",
+            "slug": "enter",
+            "body": "<p>Entries for the Who Dares Wins 2026 One Loft Race are now open. We welcome birds from fanciers across the UK and internationally. Entry is unlimited if loft space allows.<\/p>\n\n<h3>Entry Fee<\/h3>\n\n<p>The entry fee is <strong>&pound;150 per bird<\/strong>, which covers housing, feeding, training, veterinary care, and race entry for the full season including all 4 hot spots and the grand final from Falaise.<\/p>\n\n<p>A <strong>&pound;50 deposit is required for every 3 birds entered<\/strong>. This deposit is non-refundable unless in exceptional circumstances.<\/p>\n\n<h3>Important Requirements<\/h3>\n\n<ul>\n    <li>All birds must be vaccinated against PMV with an approved vaccine (e.g. Colombavac or Nobilis) a minimum of <strong>10 days before arrival<\/strong> at the loft<\/li>\n    <li>Birds should be aged between <strong>35 and 40 days old<\/strong> before coming into the loft. The loft manager has the right to refuse any birds he feels are not old enough or sick<\/li>\n    <li>Only pigeons carrying an approved ring will qualify for Points\/Prizes<\/li>\n    <li>All birds must be transferred in the ownership of Annette Tomlinson, Chapel Farm, Plains Lane, Blackbrook, DE56 2DD, Loft number DY1453<\/li>\n    <li>Pedigrees\/details for all birds will be required before the final race takes place<\/li>\n<\/ul>\n\n<h3>Key Dates<\/h3>\n\n<ul>\n    <li><strong>1st February 2026<\/strong> - Loft opens for bird arrivals<\/li>\n    <li><strong>10th April 2026<\/strong> - Loft closes for entries<\/li>\n    <li>Any birds which fall sick before April 11th can be replaced for free<\/li>\n<\/ul>\n\n<h3>How to Enter<\/h3>\n\n<p>To enter, you can:<\/p>\n<ol>\n    <li><strong>Submit online<\/strong> - Use the entry form on this page<\/li>\n    <li><strong>Send birds directly<\/strong> - Contact us for delivery arrangements and our courier schedule<\/li>\n    <li><strong>Use one of our agents<\/strong> - We have agents in several countries who can collect and ship birds on your behalf (see our <a href=\"\/page\/agents\">Agents page<\/a>)<\/li>\n    <li><strong>Drop birds off in person<\/strong> - You are welcome to visit Chapel Farm and deliver birds personally<\/li>\n<\/ol>\n\n<h3>Venture Birds<\/h3>\n\n<p>Venture Birds are available at <strong>&pound;200 each<\/strong> if purchased before Hot Spot 4, or <strong>&pound;450 each<\/strong> if purchased for the final.<\/p>\n\n<h3>Pools<\/h3>\n\n<p>Pools are available for all races and will be paid out 1 in every 10:<\/p>\n<ul>\n    <li><strong>Hot Spot races:<\/strong> 50p, &pound;1, &pound;2, &pound;3, &pound;5, &pound;10, &pound;5 Nomination (unlimited)<\/li>\n    <li><strong>Final race:<\/strong> &pound;2, &pound;3, &pound;5, &pound;10, &pound;50, &pound;100, &pound;30 Nomination (unlimited)<\/li>\n<\/ul>\n<p>There will be a 10% admin charge deducted from the total pools entered in all races.<\/p>\n\n<h3>Payment<\/h3>\n\n<p>Payment can be made by bank transfer, PayPal, or cash on delivery. Full payment must be received before birds are accepted into the loft. Please contact us for bank details.<\/p>\n\n<p>For any questions about entering your birds, please <a href=\"\/page\/contact\">contact us<\/a>.<\/p>",
+            "featured_image": null,
+            "sort_order": 3,
+            "is_published": 1,
+            "created_at": "2026-03-30 13:10:11",
+            "updated_at": "2026-03-30 14:58:08"
+        },
+        {
+            "id": 4,
+            "title": "Race Program",
+            "slug": "race-program",
+            "body": "<p>The Who Dares Wins 2025 race programme consists of <strong>4 qualifying hot spot races<\/strong> from inland England, building progressively in distance, followed by the <strong>grand final from Falaise, France<\/strong> and a <strong>super final from Guernsey<\/strong>.<\/p>\n\n<h3>2025 Race Schedule<\/h3>\n\n<table>\n    <thead>\n        <tr>\n            <th>Race<\/th>\n            <th>Liberation Point<\/th>\n            <th>Distance<\/th>\n            <th>Date<\/th>\n        <\/tr>\n    <\/thead>\n    <tbody>\n        <tr>\n            <td>Hot Spot 1<\/td>\n            <td>Warwick<\/td>\n            <td>51 miles \/ 82 km<\/td>\n            <td>Sunday 10th August<\/td>\n        <\/tr>\n        <tr>\n            <td>Hot Spot 2<\/td>\n            <td>Stow-on-the-Wold<\/td>\n            <td>76 miles \/ 122 km<\/td>\n            <td>Sunday 17th August<\/td>\n        <\/tr>\n        <tr>\n            <td>Hot Spot 3<\/td>\n            <td>Marlborough<\/td>\n            <td>116 miles \/ 187 km<\/td>\n            <td>Sunday 24th August<\/td>\n        <\/tr>\n        <tr>\n            <td>Hot Spot 4<\/td>\n            <td>Chale<\/td>\n            <td>168 miles \/ 270 km<\/td>\n            <td>Sunday 31st August<\/td>\n        <\/tr>\n    <\/tbody>\n<\/table>\n\n<h3>The Grand Final<\/h3>\n\n<table>\n    <thead>\n        <tr>\n            <th>Race<\/th>\n            <th>Liberation Point<\/th>\n            <th>Distance<\/th>\n            <th>Date<\/th>\n        <\/tr>\n    <\/thead>\n    <tbody>\n        <tr>\n            <td>Grand Final<\/td>\n            <td>Falaise, France<\/td>\n            <td>292 miles \/ 470 km<\/td>\n            <td>Sunday 14th September<\/td>\n        <\/tr>\n    <\/tbody>\n<\/table>\n\n<h3>The Super Final<\/h3>\n\n<table>\n    <thead>\n        <tr>\n            <th>Race<\/th>\n            <th>Liberation Point<\/th>\n            <th>Distance<\/th>\n            <th>Date<\/th>\n        <\/tr>\n    <\/thead>\n    <tbody>\n        <tr>\n            <td>Super Final<\/td>\n            <td>Guernsey<\/td>\n            <td>250 miles \/ 402 km<\/td>\n            <td>Sunday 28th September<\/td>\n        <\/tr>\n    <\/tbody>\n<\/table>\n\n<h3>Training Programme<\/h3>\n\n<p>Before the race season begins, all birds undergo a comprehensive training programme:<\/p>\n\n<ul>\n    <li>Daily loft exercise from arrival<\/li>\n    <li>Road training commences in June, starting from 5 miles<\/li>\n    <li>Progressive tosses building up to 100+ miles<\/li>\n    <li>Birds are trained in all wind directions<\/li>\n    <li>A minimum of 15 road training tosses before the first hot spot<\/li>\n<\/ul>\n\n<h3>Transportation<\/h3>\n\n<p>All birds are transported to the liberation point in a <strong>Geraldy racing trailer<\/strong>, purpose-built for pigeon transport with individual compartments, water systems, and climate control. The trailer ensures birds arrive at the race point in peak condition.<\/p>\n\n<h3>Liberation<\/h3>\n\n<p>WDW operates an <strong>individual liberation<\/strong> system. All birds are released simultaneously from the Geraldy trailer at the designated liberation time. Liberation times are determined on the morning of the race based on weather conditions and forecasts along the race line.<\/p>\n\n<h3>Clocking &amp; Timing<\/h3>\n\n<p>All birds are fitted with electronic timing rings. Results are recorded automatically as birds enter the loft through the electronic timing system. Results are published on the website as soon as they are verified.<\/p>",
+            "featured_image": null,
+            "sort_order": 4,
+            "is_published": 1,
+            "created_at": "2026-03-30 13:10:11",
+            "updated_at": "2026-03-31 11:04:47"
+        },
+        {
+            "id": 5,
+            "title": "Race Rules",
+            "slug": "rules",
+            "body": "<ol>\n    <li>The Race Is Called <strong>Who Dares Wins International One Loft Race<\/strong>.<\/li>\n    <li style=\"color: #c8102e; font-weight: 700;\">The Race Is Fully Affiliated To Both The RPRA.<\/li>\n    <li>All Races on land will close at <strong>10.00pm<\/strong> on the day of liberation.<\/li>\n    <li>The Final Race from Falaise will close at <strong>8.00pm<\/strong> on the 2nd day after liberation, unless it turns out to be an abnormal race with limited returns.<\/li>\n    <li>Live <strong>Benzing electronic timing<\/strong> will be used on all races.<\/li>\n    <li>Any Dispute will be settled by the committee, e.g Loft Manager, Convoyer, Admin Secretary plus Assistant Admin Secretary.<\/li>\n    <li>Venture Birds will be available at <strong>&pound;200 each<\/strong> if purchased before Hot Spot 4, if purchased for the final <strong>&pound;450 each<\/strong>.<\/li>\n    <li>All birds must be vaccinated against PMV with an approved vaccine e.g Colombavac or Nobilis a <strong>minimum of 10 days<\/strong> before arrival at the loft.<\/li>\n    <li>The loft manager would like all birds to be aged between <strong>35 and 40 days old<\/strong> before coming into the loft. The loft manager has the right to refuse any birds he feels are not old enough or sick.<\/li>\n    <li>Entry Fee is &pound;150 Per Bird, unlimited if loft space allows.<\/li>\n    <li>There will be a <strong>&pound;50 Deposit<\/strong> required for every 3 birds entered. (This is non-refundable unless in exceptional circumstances.)<\/li>\n    <li>Any birds which fall sick before April 11th can be replaced for free.<\/li>\n    <li>All birds entered by each syndicate must be transferred in the ownership of Annette Tomlinson, Chapel Farm, Plains Lane, Blackbrook, DE56 2DD, Loft number DY1453.<\/li>\n    <li>Following the final race, birds will be sold at auction, monies being split after expenses <strong>50\/50<\/strong> between Who Dares Wins and the Owners.<\/li>\n    <li style=\"color: #c8102e; font-weight: 700;\">Who Dares Wins International One Loft Race will require pedigrees\/details for all birds before the final race takes place.<\/li>\n    <li>The auction for 2026 will commence ASAP after the final race from Falaise.<\/li>\n    <li>Pools are 50p, &pound;1, &pound;2, &pound;3, &pound;5, &pound;10, &pound;5 Nomination which is unlimited.<\/li>\n    <li>Pools for the final race are &pound;2, &pound;3, &pound;5, &pound;10, &pound;50, &pound;100, and &pound;30 Nom which is Unlimited.<\/li>\n    <li>Pools are available for all races and will be paid out <strong>1 in every 10<\/strong>.<\/li>\n    <li>There will be a <strong>10% admin charge<\/strong> deducted from the total pools entered in all races.<\/li>\n    <li>Birds will be accepted from <span style=\"color: #c8102e; font-weight: 700;\">1st of February 2026<\/span>. The loft will close for entries on <span style=\"color: #c8102e; font-weight: 700;\">10th April 2026<\/span>.<\/li>\n    <li>The loft manager will reserve the right to alter\/cancel liberation sites at any time. The welfare of the birds will be his priority.<\/li>\n    <li>To win the <strong>Ace Pigeon<\/strong> the bird must have been to all 4 Hot Spot Races plus the final race and be clocked in Race Time.<\/li>\n    <li>The winner of the <strong>2 bird average<\/strong> is the first person who clocks 2 birds in the final.<\/li>\n    <li>Only pigeons carrying an approved ring will qualify for Points\/Prizes.<\/li>\n    <li>No family member will be allowed to participate.<\/li>\n<\/ol>",
+            "featured_image": null,
+            "sort_order": 5,
+            "is_published": 1,
+            "created_at": "2026-03-30 13:10:11",
+            "updated_at": "2026-03-30 22:34:30"
+        },
+        {
+            "id": 6,
+            "title": "Agents",
+            "slug": "agents",
+            "body": "<p>Who Dares Wins OLR has agents worldwide to help you. Feel free to contact our agents in your country.<\/p>",
+            "featured_image": null,
+            "sort_order": 6,
+            "is_published": 1,
+            "created_at": "2026-03-30 13:10:11",
+            "updated_at": "2026-03-30 18:30:14"
+        },
+        {
+            "id": 7,
+            "title": "Gallery",
+            "slug": "gallery",
+            "body": "<p>Photos from race days, training sessions, bird arrivals, and life at Chapel Farm.<\/p>",
+            "featured_image": null,
+            "sort_order": 7,
+            "is_published": 1,
+            "created_at": "2026-03-30 13:10:11",
+            "updated_at": "2026-03-31 11:09:47"
+        },
+        {
+            "id": 8,
+            "title": "Contact",
+            "slug": "contact",
+            "body": "<p>Whether you have questions about entering your birds, need information about the race programme, or just want to say hello, we'd love to hear from you.<\/p>\n\n<h3>Where to Find Us<\/h3>\n\n<p><strong>Who Dares Wins One Loft Race<\/strong><br>\nChapel Farm<br>\nPlains Lane, Blackbrook<br>\nBelper, Derbyshire DE56 2DD<br>\nUnited Kingdom<\/p>\n\n<h3>Get in Touch<\/h3>\n\n<p><strong>Phone:<\/strong> +44 7368 307667<br>\n<strong>Email:<\/strong> who.dares.wins@aol.com<\/p>\n\n<h3>Visiting Chapel Farm<\/h3>\n\n<p>Visitors are welcome by prior arrangement. If you would like to visit the loft, see the facility, or deliver birds in person, please telephone or email ahead to arrange a convenient time. We are always happy to show fanciers around.<\/p>\n\n<h3>The Facility<\/h3>\n\n<p>Our purpose-built 260ft loft with 26 individual sections provides world-class accommodation for your birds. Located in the heart of the Derbyshire countryside, Chapel Farm offers an ideal environment for training and racing.<\/p>\n\n<h3>Sending Birds<\/h3>\n\n<p>If you are based overseas, please get in touch with your nearest <a href=\"\/page\/agents\">agent<\/a> who can arrange collection and shipping. UK-based fanciers can deliver birds directly to the loft by arrangement, or we can recommend trusted transport services.<\/p>",
+            "featured_image": null,
+            "sort_order": 8,
+            "is_published": 1,
+            "created_at": "2026-03-30 13:10:11",
+            "updated_at": "2026-03-30 18:20:04"
+        },
+        {
+            "id": 10,
+            "title": "Developer",
+            "slug": "developer",
+            "body": "<div class=\"text-center py-8\"><h2 class=\"text-2xl font-bold text-gray-900 mb-2\">Ste Wright<\/h2><p class=\"text-gray-500 mb-6\">Web Developer<\/p><p class=\"text-gray-600\">Want your one loft race website taking to the next level?<\/p><p class=\"mt-4\"><a href=\"mailto:stewright88@gmail.com\" class=\"font-semibold\" style=\"color: var(--accent);\">stewright88@gmail.com<\/a><\/p><\/div>",
+            "featured_image": null,
+            "sort_order": 99,
+            "is_published": 1,
+            "created_at": "2026-03-31 11:43:47",
+            "updated_at": "2026-03-31 11:44:27"
+        }
+    ],
+    "agents": [
+        {
+            "id": 1,
+            "name": "Sjaak Buwalda",
+            "country": "Holland",
+            "region": null,
+            "email": "buwaldaj@hotmail.com",
+            "phone": "00 31 655855998",
+            "photo": "agents\/sjaak-buwalda.jpg",
+            "sort_order": 1,
+            "is_active": 1,
+            "created_at": "2026-03-30 18:30:14",
+            "updated_at": "2026-03-30 20:21:35"
+        },
+        {
+            "id": 2,
+            "name": "Maria Steenberg",
+            "country": "Denmark",
+            "region": null,
+            "email": "maria_steenberg@hotmail.com",
+            "phone": "+4540631768",
+            "photo": "agents\/maria-steenberg.jpg",
+            "sort_order": 2,
+            "is_active": 1,
+            "created_at": "2026-03-30 18:30:14",
+            "updated_at": "2026-03-30 20:21:35"
+        }
+    ],
+    "gallery_photos": [
+        {
+            "id": 1,
+            "path": "images\/gallery\/yvxb9r7hSDzppZk9kdO1xKqCIk65SiERZM6kpaNK.jpg",
+            "caption": null,
+            "category": null,
+            "sort_order": 0,
+            "created_at": "2026-03-31 11:12:17",
+            "updated_at": "2026-03-31 12:54:32"
+        },
+        {
+            "id": 2,
+            "path": "images\/gallery\/Nf2RfMzNIfcK2AncJWBmhadrsuVAUGRs4q5jIAAl.jpg",
+            "caption": null,
+            "category": null,
+            "sort_order": 0,
+            "created_at": "2026-03-31 11:12:17",
+            "updated_at": "2026-03-31 12:54:32"
+        },
+        {
+            "id": 3,
+            "path": "images\/gallery\/BBV3EE92iIUUzf3gXQtI3caxI6jZF3u97oyLXzoL.jpg",
+            "caption": null,
+            "category": null,
+            "sort_order": 0,
+            "created_at": "2026-03-31 11:12:17",
+            "updated_at": "2026-03-31 12:54:32"
+        },
+        {
+            "id": 4,
+            "path": "images\/gallery\/cErYFlOPkCH6SLOtIOb3MdXnL8vmGRB6c6a9BiKX.jpg",
+            "caption": null,
+            "category": null,
+            "sort_order": 0,
+            "created_at": "2026-03-31 11:12:17",
+            "updated_at": "2026-03-31 12:54:32"
+        },
+        {
+            "id": 5,
+            "path": "images\/gallery\/JqNP4VkX1ODQK1kZkRclAimLpREkriO0nwdThacI.jpg",
+            "caption": null,
+            "category": null,
+            "sort_order": 0,
+            "created_at": "2026-03-31 11:12:17",
+            "updated_at": "2026-03-31 12:54:32"
+        },
+        {
+            "id": 6,
+            "path": "images\/gallery\/xVwdicZtdZR7XktzWBdijXuJ95rH5pwtnQAxdtVe.jpg",
+            "caption": null,
+            "category": null,
+            "sort_order": 0,
+            "created_at": "2026-03-31 11:12:17",
+            "updated_at": "2026-03-31 12:54:32"
+        }
+    ],
+    "posts": [
+        {
+            "id": 1,
+            "user_id": null,
+            "title": "Welcome to the New Who Dares Wins Website",
+            "slug": "welcome-to-the-new-website",
+            "body": "<h2>Welcome to Our New Website<\/h2>\n\n<p>We are delighted to launch the brand new Who Dares Wins website. This has been a long time in the making and we are proud to finally share it with you.<\/p>\n\n<p>The new site has been built from the ground up to give you the best possible experience. Here is what you can expect:<\/p>\n\n<ul>\n    <li><strong>Live Race Results<\/strong>  - Follow every hot spot and the grand final as birds clock in, with results updated in real time<\/li>\n    <li><strong>Bird Performance Tracking<\/strong>  - Look up your birds and see their full race history, speeds, and placings across the season<\/li>\n    <li><strong>Livestream Coverage<\/strong>  - Watch live on race days as birds return to the loft<\/li>\n    <li><strong>News &amp; Updates<\/strong>  - Training reports, health updates, and all the latest from Chapel Farm<\/li>\n<\/ul>\n\n<p>We want to thank all of our loyal supporters and entrants who have made WDW what it is today. With over &pound;621,000 paid out between 2022 and 2026, we are committed to making Who Dares Wins one of the top one loft races in Europe.<\/p>\n\n<p>Entries are open for the new season. Head over to our <a href=\"\/enter\">Enter Your Birds<\/a> page for full details, or <a href=\"\/contact\">contact us<\/a> if you have any questions.<\/p>\n\n<p>Here's to a great season ahead!<\/p>\n\n<p><em> - Gary, Annette &amp; Robert Tomlinson<\/em><\/p>",
+            "excerpt": "We are delighted to launch our brand new website for the Who Dares Wins One Loft Race. Stay up to date with all the latest news, results, and live race coverage right here.",
+            "featured_image": null,
+            "post_type": "news",
+            "livestream_url": null,
+            "is_pinned": 1,
+            "is_published": 1,
+            "published_at": "2026-03-01 10:00:00",
+            "created_at": "2026-03-30 13:10:11",
+            "updated_at": "2026-03-30 14:58:08"
+        },
+        {
+            "id": 2,
+            "user_id": null,
+            "title": "Training Flights Under Way for 2026 Season",
+            "slug": "training-flights-under-way-2026",
+            "body": "<h2>Training Flights Under Way<\/h2>\n\n<p>We are pleased to report that road training has officially begun for the 2026 Who Dares Wins season. After a successful settling-in period and several weeks of loft exercise, the birds are now out on the road.<\/p>\n\n<h3>Training Progress<\/h3>\n\n<p>So far the birds have completed the following tosses:<\/p>\n\n<ul>\n    <li><strong>5 miles<\/strong>  - Two tosses, all birds home within 15 minutes. Excellent.<\/li>\n    <li><strong>10 miles<\/strong>  - Two tosses in different wind directions. Birds trapping well.<\/li>\n    <li><strong>20 miles<\/strong>  - First toss completed yesterday. Very pleased with the speed of return.<\/li>\n<\/ul>\n\n<p>The birds are looking fit and healthy. The Vanrobaeys feed is doing its job and we can see the condition building nicely. Losses have been minimal during settling, which is always encouraging at this stage of the season.<\/p>\n\n<h3>Next Steps<\/h3>\n\n<p>Over the coming weeks we will be building distances up to 50 miles before the first longer training tosses in June. We aim to have all birds trained to 100+ miles before Hot Spot 1.<\/p>\n\n<p>We will continue to post regular training updates here on the website. If you have birds entered and want to check on their progress, keep an eye on the bird performance section once racing begins.<\/p>\n\n<p>The season is shaping up well. Watch this space!<\/p>",
+            "excerpt": "Road training has started for the 2026 season. All birds are looking fit and healthy after a successful settling-in period at Chapel Farm.",
+            "featured_image": null,
+            "post_type": "update",
+            "livestream_url": null,
+            "is_pinned": 0,
+            "is_published": 1,
+            "published_at": "2026-03-20 14:30:00",
+            "created_at": "2026-03-30 13:10:11",
+            "updated_at": "2026-03-30 14:58:08"
+        },
+        {
+            "id": 3,
+            "user_id": null,
+            "title": "Live Race Day Coverage",
+            "slug": "live-race-day-coverage",
+            "body": "<h2>Live Race Day Coverage<\/h2>\n\n<p>Follow the action live from Chapel Farm on race days. Our loft camera streams live on YouTube so you can watch birds returning from the race point in real time, wherever you are in the world.<\/p>\n\n<p>The livestream typically begins around an hour before the estimated time of arrival and runs until the last birds are home. Commentary and updates will be posted alongside the stream.<\/p>\n\n<h3>What to Expect<\/h3>\n\n<ul>\n    <li>Live video from the loft entrance showing birds arriving and trapping<\/li>\n    <li>Real-time clocking updates as birds are timed in<\/li>\n    <li>Commentary from the WDW team on conditions, wind, and race progress<\/li>\n<\/ul>\n\n<p>Make sure to subscribe to our YouTube channel and turn on notifications so you don't miss a race. Share the stream with your fellow fanciers and enjoy the excitement of race day from your armchair.<\/p>",
+            "excerpt": "Watch the live feed from Chapel Farm as birds return on race day. We stream live from the loft so you can follow the action wherever you are in the world.",
+            "featured_image": null,
+            "post_type": "livestream",
+            "livestream_url": "https:\/\/www.youtube.com\/watch?v=VSfwCwad8U8",
+            "is_pinned": 0,
+            "is_published": 1,
+            "published_at": "2026-03-25 07:00:00",
+            "created_at": "2026-03-30 13:10:11",
+            "updated_at": "2026-03-30 14:58:08"
+        },
+        {
+            "id": 4,
+            "user_id": null,
+            "title": "Bird Arrivals Now Open for 2026",
+            "slug": "bird-arrivals-open-2026",
+            "body": "<h2>Bird Arrivals Now Open<\/h2>\n\n<p>We are pleased to announce that Chapel Farm is now open for bird arrivals for the 2026 Who Dares Wins season.<\/p>\n\n<p>As always, we encourage fanciers to get their birds to us as early as possible. Early arrivals benefit from:<\/p>\n\n<ul>\n    <li>A longer settling-in period at the loft<\/li>\n    <li>More time to acclimatise to the environment and other birds<\/li>\n    <li>Additional training tosses before the hot spot races begin<\/li>\n    <li>Better overall race preparation<\/li>\n<\/ul>\n\n<h3>Entry Details<\/h3>\n\n<p>The entry fee remains at <strong>&pound;150 per bird<\/strong> for the 2026 season. This covers everything from arrival through to the grand final from Falaise.<\/p>\n\n<p>The deadline for bird arrivals is <strong>10th April<\/strong>, but we strongly recommend sending birds as early as possible. Birds are accepted from 1st February 2026.<\/p>\n\n<p>To enter, visit our <a href=\"\/enter\">Enter Your Birds<\/a> page or contact us directly. If you are based overseas, please get in touch with your nearest <a href=\"\/agents\">agent<\/a> who can arrange collection and shipping.<\/p>\n\n<p>We look forward to receiving your birds and to another exciting season of racing at Who Dares Wins.<\/p>",
+            "excerpt": "We are now accepting bird entries for the 2026 season. Get your entries in early to give your birds the best preparation.",
+            "featured_image": null,
+            "post_type": "news",
+            "livestream_url": null,
+            "is_pinned": 0,
+            "is_published": 1,
+            "published_at": "2026-02-15 09:00:00",
+            "created_at": "2026-03-30 13:10:11",
+            "updated_at": "2026-03-30 14:58:08"
+        }
+    ],
+    "entry_offers": [
+        {
+            "id": 1,
+            "name": "5 Bird Package",
+            "number_of_birds": 5,
+            "price": 600,
+            "bonus_birds": 1,
+            "description": "5 birds for £600 + 1 free",
+            "is_active": 1,
+            "sort_order": 0,
+            "created_at": "2026-03-31 10:49:45",
+            "updated_at": "2026-03-31 10:53:45"
+        },
+        {
+            "id": 2,
+            "name": "10 Bird Package",
+            "number_of_birds": 10,
+            "price": 1000,
+            "bonus_birds": 2,
+            "description": "10 birds for £1000 + 1 free",
+            "is_active": 1,
+            "sort_order": 0,
+            "created_at": "2026-03-31 10:55:19",
+            "updated_at": "2026-03-31 10:55:19"
+        }
+    ],
+    "prize_categories": [
+        {
+            "id": 1,
+            "name": "Grand Final",
+            "type": "positions",
+            "sort_order": 1,
+            "is_active": 1,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-30 20:21:35"
+        },
+        {
+            "id": 2,
+            "name": "Hot Spot Race 1",
+            "type": "positions",
+            "sort_order": 5,
+            "is_active": 1,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-30 22:45:57"
+        },
+        {
+            "id": 3,
+            "name": "Hot Spot Race 2",
+            "type": "positions",
+            "sort_order": 4,
+            "is_active": 1,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-30 22:45:57"
+        },
+        {
+            "id": 4,
+            "name": "Hot Spot Race 3",
+            "type": "positions",
+            "sort_order": 3,
+            "is_active": 1,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-30 22:45:57"
+        },
+        {
+            "id": 5,
+            "name": "Hot Spot Race 4",
+            "type": "positions",
+            "sort_order": 2,
+            "is_active": 1,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-30 22:45:57"
+        },
+        {
+            "id": 6,
+            "name": "Ace Pigeon",
+            "type": "award",
+            "sort_order": 6,
+            "is_active": 1,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-30 22:45:57"
+        },
+        {
+            "id": 7,
+            "name": "First to Clock 2 Birds in Final",
+            "type": "award",
+            "sort_order": 7,
+            "is_active": 1,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-30 22:45:57"
+        }
+    ],
+    "prize_positions": [
+        {
+            "id": 1,
+            "prize_category_id": 1,
+            "label": "1st",
+            "amount": "To Be Confirmed",
+            "sort_order": 1,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:01:21"
+        },
+        {
+            "id": 2,
+            "prize_category_id": 1,
+            "label": "2nd",
+            "amount": "To Be Confirmed",
+            "sort_order": 2,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:01:21"
+        },
+        {
+            "id": 3,
+            "prize_category_id": 1,
+            "label": "3rd",
+            "amount": "To Be Confirmed",
+            "sort_order": 3,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:01:21"
+        },
+        {
+            "id": 4,
+            "prize_category_id": 1,
+            "label": "4th",
+            "amount": "To Be Confirmed",
+            "sort_order": 4,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:01:21"
+        },
+        {
+            "id": 5,
+            "prize_category_id": 1,
+            "label": "5th",
+            "amount": "To Be Confirmed",
+            "sort_order": 5,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:01:21"
+        },
+        {
+            "id": 6,
+            "prize_category_id": 1,
+            "label": "6th to 10th",
+            "amount": "To Be Confirmed",
+            "sort_order": 6,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:01:21"
+        },
+        {
+            "id": 7,
+            "prize_category_id": 1,
+            "label": "11th to 15th",
+            "amount": "To Be Confirmed",
+            "sort_order": 7,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:01:21"
+        },
+        {
+            "id": 8,
+            "prize_category_id": 1,
+            "label": "16th to 20th",
+            "amount": "To Be Confirmed",
+            "sort_order": 8,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:01:21"
+        },
+        {
+            "id": 9,
+            "prize_category_id": 1,
+            "label": "21st to 25th",
+            "amount": "To Be Confirmed",
+            "sort_order": 9,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:01:21"
+        },
+        {
+            "id": 10,
+            "prize_category_id": 1,
+            "label": "26th to 30th",
+            "amount": "To Be Confirmed",
+            "sort_order": 10,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:01:21"
+        },
+        {
+            "id": 11,
+            "prize_category_id": 1,
+            "label": "30th to 40th",
+            "amount": "To Be Confirmed",
+            "sort_order": 11,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:01:21"
+        },
+        {
+            "id": 12,
+            "prize_category_id": 2,
+            "label": "1st",
+            "amount": "To Be Confirmed",
+            "sort_order": 1,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:02:47"
+        },
+        {
+            "id": 13,
+            "prize_category_id": 2,
+            "label": "2nd",
+            "amount": "To Be Confirmed",
+            "sort_order": 2,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:02:47"
+        },
+        {
+            "id": 14,
+            "prize_category_id": 2,
+            "label": "3rd",
+            "amount": "To Be Confirmed",
+            "sort_order": 3,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:02:47"
+        },
+        {
+            "id": 15,
+            "prize_category_id": 2,
+            "label": "4th",
+            "amount": "To Be Confirmed",
+            "sort_order": 4,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:02:47"
+        },
+        {
+            "id": 16,
+            "prize_category_id": 2,
+            "label": "5th",
+            "amount": "To Be Confirmed",
+            "sort_order": 5,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:02:47"
+        },
+        {
+            "id": 17,
+            "prize_category_id": 2,
+            "label": "6th to 9th",
+            "amount": "To Be Confirmed",
+            "sort_order": 6,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:02:47"
+        },
+        {
+            "id": 21,
+            "prize_category_id": 3,
+            "label": "1st",
+            "amount": "To Be Confirmed",
+            "sort_order": 1,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:02:24"
+        },
+        {
+            "id": 22,
+            "prize_category_id": 3,
+            "label": "2nd",
+            "amount": "To Be Confirmed",
+            "sort_order": 2,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:02:24"
+        },
+        {
+            "id": 23,
+            "prize_category_id": 3,
+            "label": "3rd",
+            "amount": "To Be Confirmed",
+            "sort_order": 3,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:02:24"
+        },
+        {
+            "id": 24,
+            "prize_category_id": 3,
+            "label": "4th",
+            "amount": "To Be Confirmed",
+            "sort_order": 4,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:02:24"
+        },
+        {
+            "id": 25,
+            "prize_category_id": 3,
+            "label": "5th",
+            "amount": "To Be Confirmed",
+            "sort_order": 5,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:02:24"
+        },
+        {
+            "id": 26,
+            "prize_category_id": 3,
+            "label": "6th to 9th",
+            "amount": "To Be Confirmed",
+            "sort_order": 6,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:02:24"
+        },
+        {
+            "id": 30,
+            "prize_category_id": 4,
+            "label": "1st",
+            "amount": "To Be Confirmed",
+            "sort_order": 1,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:02:05"
+        },
+        {
+            "id": 31,
+            "prize_category_id": 4,
+            "label": "2nd",
+            "amount": "To Be Confirmed",
+            "sort_order": 2,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:02:05"
+        },
+        {
+            "id": 32,
+            "prize_category_id": 4,
+            "label": "3rd",
+            "amount": "To Be Confirmed",
+            "sort_order": 3,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:02:05"
+        },
+        {
+            "id": 33,
+            "prize_category_id": 4,
+            "label": "4th",
+            "amount": "To Be Confirmed",
+            "sort_order": 4,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:02:05"
+        },
+        {
+            "id": 34,
+            "prize_category_id": 4,
+            "label": "5th",
+            "amount": "To Be Confirmed",
+            "sort_order": 5,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:02:05"
+        },
+        {
+            "id": 35,
+            "prize_category_id": 4,
+            "label": "6th to 9th",
+            "amount": "To Be Confirmed",
+            "sort_order": 6,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:02:05"
+        },
+        {
+            "id": 39,
+            "prize_category_id": 5,
+            "label": "1st",
+            "amount": "To Be Confirmed",
+            "sort_order": 1,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:01:44"
+        },
+        {
+            "id": 40,
+            "prize_category_id": 5,
+            "label": "2nd",
+            "amount": "To Be Confirmed",
+            "sort_order": 2,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:01:44"
+        },
+        {
+            "id": 41,
+            "prize_category_id": 5,
+            "label": "3rd",
+            "amount": "To Be Confirmed",
+            "sort_order": 3,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:01:44"
+        },
+        {
+            "id": 42,
+            "prize_category_id": 5,
+            "label": "4th",
+            "amount": "To Be Confirmed",
+            "sort_order": 4,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:01:44"
+        },
+        {
+            "id": 43,
+            "prize_category_id": 5,
+            "label": "5th",
+            "amount": "To Be Confirmed",
+            "sort_order": 5,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:01:44"
+        },
+        {
+            "id": 44,
+            "prize_category_id": 5,
+            "label": "6th to 9th",
+            "amount": "To Be Confirmed",
+            "sort_order": 6,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:01:44"
+        },
+        {
+            "id": 48,
+            "prize_category_id": 6,
+            "label": "Winner",
+            "amount": "To Be Confirmed",
+            "sort_order": 1,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:02:52"
+        },
+        {
+            "id": 49,
+            "prize_category_id": 7,
+            "label": "Winner",
+            "amount": "To Be Confirmed",
+            "sort_order": 1,
+            "created_at": "2026-03-30 20:21:35",
+            "updated_at": "2026-03-31 11:02:56"
+        }
+    ]
+}

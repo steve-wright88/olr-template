@@ -30,7 +30,7 @@
                    x-show="filter === 'all'{{ $photo->category ? " || filter === '" . e($photo->category) . "'" : '' }}"
                    x-transition
                    class="group relative rounded-lg overflow-hidden aspect-square cursor-pointer">
-                    <img src="{{ asset('storage/' . $photo->path) }}" alt="{{ $photo->caption }}"
+                    <img src="{{ asset($photo->path) }}" alt="{{ $photo->caption }}"
                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
                     @if($photo->caption)
                         <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-3 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -77,7 +77,7 @@
             filter: 'all',
             lightbox: false,
             current: 0,
-            photos: @json($photos->map(fn($p) => ['src' => asset('storage/' . $p->path), 'caption' => $p->caption, 'category' => $p->category])->values()),
+            photos: @json($photos->map(fn($p) => ['src' => asset($p->path), 'caption' => $p->caption, 'category' => $p->category])->values()),
 
             touchStartX: 0,
 

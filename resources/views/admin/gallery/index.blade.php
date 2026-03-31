@@ -57,7 +57,7 @@
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             @foreach($photos as $photo)
                 <div class="group relative bg-white border border-gray-200 rounded-lg overflow-hidden">
-                    <img src="{{ asset('storage/' . $photo->path) }}" alt="{{ $photo->caption }}"
+                    <img src="{{ asset($photo->path) }}" alt="{{ $photo->caption }}"
                          class="w-full aspect-square object-cover">
 
                     {{-- Overlay --}}
