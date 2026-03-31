@@ -35,6 +35,7 @@
                     <th class="px-3 py-3 text-right">Total</th>
                     <th class="px-3 py-3 text-center">Status</th>
                     <th class="px-5 py-3 text-right">Date</th>
+                    <th class="px-3 py-3"></th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-100">
@@ -59,10 +60,13 @@
                             </span>
                         </td>
                         <td class="px-5 py-3 text-right text-xs text-gray-400">{{ $entry->created_at->format('j M Y') }}</td>
+                        <td class="px-3 py-3 text-right">
+                            <a href="{{ route('admin.pool-entries.show', $entry) }}" class="text-sm font-medium hover:underline" style="color: var(--accent);">View</a>
+                        </td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="8" class="px-5 py-12 text-center text-gray-400">No pool entries yet.</td>
+                        <td colspan="9" class="px-5 py-12 text-center text-gray-400">No pool entries yet.</td>
                     </tr>
                 @endforelse
             </tbody>

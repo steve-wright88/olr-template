@@ -40,6 +40,14 @@
             },
             removePoint(i) {
                 this.points.splice(i, 1);
+            },
+            moveUp(i) {
+                if (i <= 0) return;
+                [this.points[i - 1], this.points[i]] = [this.points[i], this.points[i - 1]];
+            },
+            moveDown(i) {
+                if (i >= this.points.length - 1) return;
+                [this.points[i], this.points[i + 1]] = [this.points[i + 1], this.points[i]];
             }
         }">
         @csrf
@@ -82,11 +90,19 @@
                 <div class="border border-gray-200 rounded-lg p-4 bg-gray-50">
                     <div class="flex items-center justify-between mb-3">
                         <div class="flex items-center gap-2">
-                            <span class="w-4 h-4 rounded-full border-2 border-white shadow" :style="'background:' + getColor(point, index)"></span>
+                            <span class="w-5 h-5 rounded-full border-2 border-white shadow flex items-center justify-center text-[10px] font-bold text-white" :style="'background:' + getColor(point, index)" x-text="point.type === 'final' ? 'F' : point.type === 'super' ? 'SF' : (index + 1)"></span>
                             <span class="text-sm font-semibold text-gray-700" x-text="point.name || ('Race Point ' + (index + 1))"></span>
                             <span class="text-xs text-gray-400" x-text="point.distance ? '(' + point.distance + ')' : ''"></span>
                         </div>
-                        <button type="button" @click="removePoint(index)" class="text-red-500 hover:text-red-700 text-xs font-medium">Remove</button>
+                        <div class="flex items-center gap-2">
+                            <button type="button" @click="moveUp(index)" :class="index === 0 ? 'opacity-20 cursor-not-allowed' : 'hover:text-gray-700'" class="text-gray-400 p-1" title="Move up">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/></svg>
+                            </button>
+                            <button type="button" @click="moveDown(index)" :class="index === points.length - 1 ? 'opacity-20 cursor-not-allowed' : 'hover:text-gray-700'" class="text-gray-400 p-1" title="Move down">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </button>
+                            <button type="button" @click="removePoint(index)" class="text-red-500 hover:text-red-700 text-xs font-medium">Remove</button>
+                        </div>
                     </div>
                     <div class="grid grid-cols-2 gap-3">
                         <div>
