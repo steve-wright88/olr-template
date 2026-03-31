@@ -37,7 +37,7 @@
                 <div class="hidden lg:flex items-center gap-0.5">
                     @php
                         $navPages = \App\Models\Page::published()->get();
-                        $keyPages = ['enter', 'enter-your-birds', 'prize-money', 'race-program', 'race-programme'];
+                        $keyPages = ['enter', 'enter-your-birds', 'prize-money', 'race-program', 'race-programme', 'developer'];
                         $featuredPages = $navPages->filter(fn($p) => in_array($p->slug, $keyPages) && !in_array($p->slug, ['enter', 'enter-your-birds']));
                         $otherPages = $navPages->reject(fn($p) => in_array($p->slug, $keyPages));
                         $entriesEnabled = \App\Models\Setting::get('entries_enabled', '1') === '1';
@@ -208,7 +208,7 @@
             <div class="border-t border-white/10 mt-6 pt-6 text-center text-xs text-white/40">
                 &copy; {{ date('Y') }} {{ config('olr.site_name') }}. {{ __('t.data_powered_by') }} <a href="https://oneloftrace.live" target="_blank" class="underline hover:text-white/60">oneloftrace.live</a>
                 <br class="sm:hidden"><span class="hidden sm:inline mx-1">&middot;</span>
-                <a href="mailto:stewright88@gmail.com" class="hover:text-white/60">Want your one loft race website taken to the next level? Get in touch.</a>
+                Want your one loft race website taken to the next level? <a href="{{ route('pages.show', 'developer') }}" class="underline hover:text-white/60">Get in touch</a>.
             </div>
         </div>
     </footer>
